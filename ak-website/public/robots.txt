@@ -6,4 +6,4 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://akbattery.in/sitemap.xml
+Sitemap: https://akbatteries.in/sitemap.xml
