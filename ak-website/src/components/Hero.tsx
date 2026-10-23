@@ -233,7 +233,7 @@ export function Hero() {
      
 
             {/* Brand Card with Generous Half-White Frosted Glass Styling */}
-            <div className="w-full py-5 sm:py-7 md:py-8 px-6 sm:px-10 md:px-12 rounded-2xl sm:rounded-3xl bg-white/65 backdrop-blur-sm border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.18)] ring-1 ring-black/5 flex flex-col items-center">
+            <div className="w-full py-5 sm:py-7 md:py-8 px-6 sm:px-10 md:px-12 rounded-2xl sm:rounded-3xl bg-white/85 backdrop-blur-sm border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.18)] ring-1 ring-black/5 flex flex-col items-center">
               {/* Title */}
               <h1 className="font-serif font-black text-slate-900 text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none drop-shadow-2xs">
                 AK Batteries
