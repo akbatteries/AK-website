@@ -3,41 +3,123 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, BadgeCheck, Wrench, UserCheck, ShieldCheck, Tag, Zap, MapPin, ShoppingCart, Droplets, BatteryCharging, ChevronRight, PhoneCall } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ShieldCheck,
+  Droplets,
+  BatteryCharging,
+  ChevronRight,
+  BadgeCheck,
+  Wrench,
+  UserCheck,
+  Tag,
+  Zap,
+  MapPin,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "./ui/Button";
-import { Badge } from "./ui/Badge";
+
+interface Partner {
+  name: string;
+  color: string;
+  src?: string;
+  width?: number;
+  height?: number;
+  logo?: React.ReactNode;
+}
+
+interface ServiceItem {
+  id: "ro" | "battery" | "inverter";
+  title: string;
+  shortTitle: string;
+  tag: string;
+  cardImg: string;
+  bgImg: string;
+  link: string;
+  badge: {
+    title: string;
+    sub: string;
+    color: string;
+  };
+}
+
+const SERVICES: ServiceItem[] = [
+  {
+    id: "ro",
+    title: "RO Water Purifier",
+    shortTitle: "RO Repair",
+    tag: "Clean & Pure Water",
+    cardImg: "/images/service_ro_repair.jpg",
+    bgImg: "/images/hero_bg_ro.jpg",
+    link: "/water-purifier",
+    badge: {
+      title: "100% PURE",
+      sub: "RO + ALKALINE",
+      color: "from-cyan-600 via-teal-700 to-slate-900",
+    },
+  },
+  {
+    id: "battery",
+    title: "Inverter Batteries",
+    shortTitle: "Battery",
+    tag: "Heavy-Duty Power",
+    cardImg: "/images/service_battery_replace.jpg",
+    bgImg: "/images/hero_bg_battery.jpg",
+    link: "/batteries-inverters",
+    badge: {
+      title: "100% GENUINE",
+      sub: "EXIDE & AMARON",
+      color: "from-rose-600 via-rose-700 to-slate-900",
+    },
+  },
+  {
+    id: "inverter",
+    title: "UPS & Inverters",
+    shortTitle: "Inverter",
+    tag: "Pure Sine Wave",
+    cardImg: "/images/service_inverter_maintenance.jpg",
+    bgImg: "/images/hero_bg_inverter.jpg",
+    link: "/batteries-inverters",
+    badge: {
+      title: "SMART UPS",
+      sub: "ZERO DOWNTIME",
+      color: "from-amber-600 via-orange-700 to-slate-900",
+    },
+  },
+];
 
 export function Hero() {
-  const router = useRouter();
+  const [activeId, setActiveId] = React.useState<"ro" | "battery" | "inverter">("battery");
+
+  const activeService = React.useMemo(
+    () => SERVICES.find((s) => s.id === activeId) || SERVICES[1],
+    [activeId]
+  );
+
+  // Cyclical slot order placing active item consistently in the center (index 1)
+  const orderedServices = React.useMemo(() => {
+    if (activeId === "ro") {
+      return [SERVICES[2], SERVICES[0], SERVICES[1]]; // [Inverter, RO (center), Battery]
+    } else if (activeId === "inverter") {
+      return [SERVICES[1], SERVICES[2], SERVICES[0]]; // [Battery, Inverter (center), RO]
+    } else {
+      return [SERVICES[0], SERVICES[1], SERVICES[2]]; // [RO, Battery (center), Inverter]
+    }
+  }, [activeId]);
+
+  const handleCardClick = (service: ServiceItem) => {
+    setActiveId(service.id);
+  };
+
   const features = [
     { text: "Genuine Products", Icon: BadgeCheck },
     { text: "Doorstep Installation", Icon: Wrench },
-    { text: "Expert Technicians", Icon: UserCheck },
     { text: "Warranty Support", Icon: ShieldCheck },
     { text: "Affordable Pricing", Icon: Tag },
     { text: "Fast Response", Icon: Zap },
-    { text: "Trusted Local Service", Icon: MapPin }
-  ];
-  // Avatars data for social proof
-  const avatars = [
-    { bg: "bg-blue-500", label: "JD", grad: "from-blue-400 to-blue-600" },
-    { bg: "bg-emerald-500", label: "AS", grad: "from-emerald-400 to-emerald-600" },
-    { bg: "bg-rose-500", label: "RK", grad: "from-rose-400 to-rose-600" },
-    { bg: "bg-amber-500", label: "ML", grad: "from-amber-400 to-amber-600" },
+    { text: "Trusted Local Service", Icon: MapPin },
   ];
 
-  interface Partner {
-    name: string;
-    color: string;
-    src?: string;
-    width?: number;
-    height?: number;
-    logo?: React.ReactNode;
-  }
-
-  // Partners data for trusted partners strip
   const partners: Partner[] = [
     {
       name: "EXIDE",
@@ -64,8 +146,22 @@ export function Hero() {
       name: "purosis",
       color: "text-[#10B981]",
       logo: (
-        <svg className="max-h-full max-w-full" viewBox="0 0 110 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="Georgia, serif" fontStyle="italic" fontSize="20" fill="currentColor">purosis</text>
+        <svg
+          className="max-h-full max-w-full"
+          viewBox="0 0 110 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <text
+            x="0"
+            y="22"
+            fontFamily="Georgia, serif"
+            fontStyle="italic"
+            fontSize="20"
+            fill="currentColor"
+          >
+            purosis
+          </text>
           <circle cx="85" cy="8" r="2.5" fill="#10B981" />
         </svg>
       ),
@@ -87,207 +183,207 @@ export function Hero() {
   ];
 
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden bg-[#F9FAFB] text-[#0B1B3A] min-h-[calc(100dvh-5.5rem)] flex flex-col justify-between py-10 sm:py-16"
-    >
-      {/* Main Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
-        <div className="flex flex-col items-center text-center space-y-6 sm:space-y-8">
+    <section id="home" className="relative w-full bg-white text-slate-900 overflow-hidden">
+      {/* ============================================================== */}
+      {/* 1. HERO SECTION BACKGROUND WITH ANIMATED CROSS-FADE            */}
+      {/* ============================================================== */}
+      <div className="relative w-full h-[400px] sm:h-[570px] md:h-[630px] overflow-hidden select-none">
+        {SERVICES.map((srv) => {
+          const isActive = srv.id === activeId;
+          return (
+            <motion.div
+              key={srv.id}
+              initial={false}
+              animate={{
+                opacity: isActive ? 1 : 0,
+                scale: isActive ? 1 : 1.05,
+              }}
+              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1.0] }}
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              style={{
+                zIndex: isActive ? 1 : 0,
+              }}
+            >
+              <Image
+                src={srv.bgImg}
+                alt={srv.title}
+                fill
+                priority={srv.id === "battery"}
+                className="object-cover object-center"
+                sizes="100vw"
+              />
+            </motion.div>
+          );
+        })}
 
-          {/* 1. Top Light Pill Badge */}
+        {/* Ambient Top Shadow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-transparent pointer-events-none z-[2]" />
+
+        {/* Smooth Transition into Clean White Content Section Below */}
+        <div className="absolute inset-x-0 bottom-0 h-44 sm:h-64 bg-gradient-to-t from-white via-white/85 to-transparent pointer-events-none z-[2]" />
+
+        {/* Prominent AK Batteries Brand Showcase in Hero Section (Generously Spaced) */}
+        <div className="absolute top-5 sm:top-8 md:top-10 inset-x-0 flex justify-center z-[3] pointer-events-none select-none px-4 sm:px-6">
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-rose-200/80 bg-rose-50/90 text-rose-700 text-xs sm:text-sm font-extrabold uppercase tracking-widest shadow-2xs select-none"
+            initial={{ opacity: 0, y: -12, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center text-center max-w-md sm:max-w-lg md:max-w-xl w-full"
           >
-            <Sparkles className="w-4 h-4 text-rose-600 animate-pulse shrink-0" />
-            <span>Authorized Sales & Doorstep Service Specialist</span>
+     
+
+            {/* Brand Card with Generous Half-White Frosted Glass Styling */}
+            <div className="w-full py-5 sm:py-7 md:py-8 px-6 sm:px-10 md:px-12 rounded-2xl sm:rounded-3xl bg-white/65 backdrop-blur-sm border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.18)] ring-1 ring-black/5 flex flex-col items-center">
+              {/* Title */}
+              <h1 className="font-serif font-black text-slate-900 text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none drop-shadow-2xs">
+                AK Batteries
+              </h1>
+
+
+              {/* Subtitle */}
+              <div className="flex items-center gap-2 sm:gap-2.5 mt-3 sm:mt-3.5">
+                <span className="text-xs sm:text-sm md:text-base font-extrabold text-slate-700 tracking-[0.14em] uppercase whitespace-nowrap">
+                  Batteries & Water Purifiers
+                </span>
+              </div>
+
+              {/* Trust Feature Pills */}
+              <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-3 sm:mt-3.5 max-w-sm sm:max-w-lg">
+                {features.slice(0, 5).map((feature, idx) => {
+                  const IconComp = feature.Icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-slate-100/90 border border-slate-200 text-slate-700 text-[10px] sm:text-xs font-semibold shadow-2xs select-none"
+                    >
+                      <IconComp className="w-3.5 h-3.5 text-slate-900 shrink-0" />
+                      <span>{feature.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Motto */}
+              <h3 className="font-serif italic text-slate-600 text-xs sm:text-sm md:text-base font-medium tracking-wide mt-3.5 sm:mt-4 pt-3 sm:pt-3.5 border-t border-slate-200/90 w-full text-center">
+                “Trusted Solutions for Everyday Living”
+              </h3>
+            </div>
           </motion.div>
-
-          {/* 2. Big Impact Bold Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[#0B1B3A] leading-[1.05] max-w-4xl"
-          >
-            YOUR TRUSTED <span className="text-rose-600">BATTERY</span> & <span className="text-rose-600">RO PURIFIER</span> STORE
-          </motion.h1>
-
-          {/* 3. Description Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 0.9, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-slate-600 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed font-normal"
-          >
-            Doorstep sales, installation & service across Kannamangalam, Vellore and nearby areas — budget to premium. Trusted by 1000+ happy homes since 2025.
-          </motion.p>
-
-          {/* 4. Action CTAs Buttons (Stacked full-width on mobile like reference layout) */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md sm:max-w-none px-2"
-          >
-            <Link href="/water-purifier" className="w-full sm:w-72">
-              <button className="w-full py-4 px-6 rounded-xl bg-[#0B1B3A] hover:bg-[#07132B] active:scale-[0.99] text-white font-black text-sm sm:text-base uppercase tracking-wider flex items-center justify-center gap-3 shadow-md hover:shadow-lg transition-all cursor-pointer">
-                <Droplets className="w-5 h-5 text-rose-500 shrink-0" />
-                <span>EXPLORE RO PURIFIERS</span>
-              </button>
-            </Link>
-
-            <Link href="/batteries-inverters" className="w-full sm:w-72">
-              <button className="w-full py-4 px-6 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 active:scale-[0.99] text-[#0B1B3A] font-black text-sm sm:text-base uppercase tracking-wider flex items-center justify-center gap-3 shadow-xs hover:shadow-md transition-all cursor-pointer">
-                <BatteryCharging className="w-5 h-5 text-rose-600 shrink-0" />
-                <span>UPS INVERTERS & BATTERIES</span>
-              </button>
-            </Link>
-          </motion.div>
-
-          {/* 5. Bottom Light Feature Badges */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-3xl pt-6 pb-12 sm:pb-0"
-          >
-            {features.slice(0, 5).map((feature, idx) => {
-              const IconComp = feature.Icon;
-              return (
-                <div
-                  key={idx}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200/90 text-slate-700 text-xs sm:text-sm font-semibold shadow-2xs hover:border-slate-300 hover:bg-slate-50 transition-colors select-none"
-                >
-                  <IconComp className="w-4 h-4 text-[#0B1B3A] shrink-0" />
-                  <span>{feature.text}</span>
-                </div>
-              );
-            })}
-          </motion.div>
-
         </div>
       </div>
 
-      {/* Section 5: Category Cards (Repeatable Component) */}
-      <div className="mt-12 sm:mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4 sm:px-6">
-        {/* Card 1: Batteries & Inverters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="group bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-        >
-          <div className="space-y-3">
-            <div className="flex items-center justify-between mb-2">
-              <div className="w-11 h-11 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center font-bold border border-rose-100">
-                <BatteryCharging className="w-5 h-5" />
-              </div>
-              <span className="text-[11px] font-extrabold px-3 py-1 rounded-full bg-rose-50 text-rose-700 uppercase tracking-wider border border-rose-100">
-                Inverters & Power Backup
-              </span>
-            </div>
+      {/* ============================================================== */}
+      {/* 2. FEATURED SERVICES CARDS (INTERACTIVE CENTER REORDERING)     */}
+      {/* ============================================================== */}
+      <div className="relative z-20 max-w-4xl mx-auto px-4 -mt-12 sm:-mt-16 md:-mt-20">
+        {/* Script label matching "Popular Services" with generous margin */}
+        <div className="flex items-center justify-center mb-4 sm:mb-5 select-none">
+          <span className="font-serif italic text-slate-800 text-xs sm:text-sm font-semibold tracking-wider drop-shadow-sm bg-white/85 backdrop-blur-md px-4.5 py-1.5 rounded-full border border-white/90 shadow-2xs inline-flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+            <span>Popular Services</span>
+          </span>
+        </div>
 
-            <h2 className="text-xl sm:text-2xl font-black text-[#0B1B3A] tracking-tight group-hover:text-rose-600 transition-colors">
-              Inverter Batteries & Home UPS Systems in Kannamangalam
-            </h2>
-
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-              Heavy-duty tall tubular batteries and pure sine wave inverters engineered for continuous power backup across Kannamangalam, Arani, and Vellore.
-            </p>
-
-            <ul className="grid grid-cols-1 gap-2 pt-1 text-xs text-slate-700 font-medium">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
-                <span><strong>Exide, Amaron & Luminous:</strong> 100% factory warranty & genuine units.</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
-                <span><strong>Tall Tubular & Pure Sine Wave:</strong> Silent, long backup duration.</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
-                <span><strong>Doorstep Support:</strong> Free installation & old battery buyback discounts.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="pt-5 mt-4 border-t border-slate-100 flex justify-center">
-            <Link href="/batteries-inverters" className="inline-block w-full">
-              <Button
-                variant="primary"
-                size="md"
-                className="w-full bg-[#0B1B3A] hover:bg-[#07132B] text-white hover:text-white font-bold text-xs uppercase tracking-wider h-11 px-6 rounded-full inline-flex items-center justify-center gap-1.5 transition-all shadow-sm whitespace-nowrap"
+        {/* Horizontal Row of 3 Rounded Cards with generous gap and padding */}
+        <div className="flex items-center justify-center gap-3.5 sm:gap-6 md:gap-7 py-3 sm:py-4">
+          {orderedServices.map((service, index) => {
+            const isCenter = index === 1;
+            return (
+              <motion.div
+                key={service.id}
+                layout
+                transition={{
+                  type: "spring",
+                  stiffness: 320,
+                  damping: 28,
+                }}
+                onClick={() => handleCardClick(service)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleCardClick(service);
+                  }
+                }}
+                className={`cursor-pointer select-none rounded-2xl sm:rounded-3xl relative overflow-hidden transition-all duration-300 group ${isCenter
+                  ? "w-28 sm:w-44 md:w-52 aspect-square shadow-2xl ring-4 ring-white z-10 scale-105 sm:scale-110"
+                  : "w-24 sm:w-36 md:w-44 aspect-square shadow-lg border border-white/80 opacity-80 hover:opacity-100 z-0 hover:-translate-y-1 hover:shadow-xl"
+                  }`}
               >
-                <span className="text-white">Explore Batteries & Inverters</span>
-                <ChevronRight className="w-4 h-4 text-white" />
-              </Button>
-            </Link>
-          </div>
-        </motion.div>
+                <Image
+                  src={service.cardImg}
+                  alt={service.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes={isCenter ? "(max-width: 640px) 112px, 208px" : "(max-width: 640px) 96px, 176px"}
+                />
 
-        {/* Card 2: RO Water Purifiers */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="group bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end justify-center p-2.5 sm:p-4 text-center">
+                  <span
+                    className={`font-serif font-extrabold text-white tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-center ${isCenter ? "text-base sm:text-xl" : "text-xs sm:text-base"
+                      }`}
+                  >
+                    {service.shortTitle}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ============================================================== */}
+      {/* 3. TYPOGRAPHY & ACTION BUTTONS SECTION                        */}
+      {/* ============================================================== */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-7 sm:pt-10 pb-8 text-center">
+        {/* High-Contrast Bold Editorial Headline matching Reference */}
+        <motion.h1
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-[1.12] max-w-2xl mx-auto"
         >
-          <div className="space-y-3">
-            <div className="flex items-center justify-between mb-2">
-              <div className="w-11 h-11 rounded-full bg-cyan-50 text-cyan-700 flex items-center justify-center font-bold border border-cyan-100">
-                <Droplets className="w-5 h-5" />
-              </div>
-              <span className="text-[11px] font-extrabold px-3 py-1 rounded-full bg-cyan-50 text-cyan-700 uppercase tracking-wider border border-cyan-100">
-                Pure Drinking Water
-              </span>
-            </div>
+          Discover Reliable Power & Pure Water for Your Home
+        </motion.h1>
 
-            <h2 className="text-xl sm:text-2xl font-black text-[#0B1B3A] tracking-tight group-hover:text-rose-600 transition-colors">
-              RO Water Purifier Sales, Service & Filter Repair in Kannamangalam
-            </h2>
+        {/* Concise Description Subheadline */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 0.9, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-slate-600 text-sm sm:text-base max-w-lg mx-auto leading-relaxed mt-3.5 sm:mt-4 font-normal"
+        >
+          Doorstep sales, installation & service across Kannamangalam, Vellore and nearby areas.
+          Authorized dealer for Exide, Amaron, and Purosis trusted by 1000+ happy homes.
+        </motion.p>
 
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-              Multi-stage RO+UV+UF+Alkaline water purifiers that eliminate heavy metals, high TDS, and bacterial impurities for safe drinking water.
-            </p>
+        {/* Action CTAs (Side-by-Side: Solid Dark Button + Secondary Outlined Button) */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10"
+        >
+          {/* Solid Dark Button with Drop Shadow */}
+          <Link href="/batteries-inverters">
+            <button className="bg-slate-950 hover:bg-black active:scale-95 text-white font-semibold text-xs sm:text-sm px-6 sm:px-8 py-3.5 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.3)] transition-all cursor-pointer">
+              Explore Batteries
+            </button>
+          </Link>
 
-            <ul className="grid grid-cols-1 gap-2 pt-1 text-xs text-slate-700 font-medium">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 shrink-0" />
-                <span><strong>Purosis & Finpure Brands:</strong> Advanced mineral alkaline purification.</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 shrink-0" />
-                <span><strong>High-TDS RO Membranes:</strong> Filters borewell water up to 2000+ ppm.</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 shrink-0" />
-                <span><strong>Doorstep Repairs:</strong> Filter service, membrane change & technician support.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="pt-5 mt-4 border-t border-slate-100 flex justify-center">
-            <Link href="/water-purifier" className="inline-block w-full">
-              <Button
-                variant="primary"
-                size="md"
-                className="w-full bg-[#0B1B3A] hover:bg-[#07132B] text-white hover:text-white font-bold text-xs uppercase tracking-wider h-11 px-6 rounded-full inline-flex items-center justify-center gap-1.5 transition-all shadow-sm whitespace-nowrap"
-              >
-                <span className="text-white">Explore RO Water Purifiers</span>
-                <ChevronRight className="w-4 h-4 text-white" />
-              </Button>
-            </Link>
-          </div>
+          {/* Secondary Outlined Button */}
+          <Link href="/water-purifier">
+            <button className="bg-white hover:bg-slate-50 active:scale-95 text-slate-900 border border-slate-300 font-semibold text-xs sm:text-sm px-6 sm:px-8 py-3.5 rounded-full shadow-xs transition-all cursor-pointer">
+              RO Purifiers
+            </button>
+          </Link>
         </motion.div>
       </div>
 
-      {/* Unified Trusted Partners Section at the bottom of Hero */}
+      <div className="pb-8 sm:pb-12" />
     </section>
   );
 }
+
+export default Hero;

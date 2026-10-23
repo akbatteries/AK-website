@@ -62,16 +62,16 @@ export function ContactContent() {
     {
       icon: <InstagramIcon className="w-5 h-5 text-rose-600" />,
       title: "Instagram",
-      value: "@kaviprasath_269",
+      value: "@akbatteriesKannamangalam",
       sub: "Follow us for updates & offers",
-      href: "https://www.instagram.com/kaviprasath_269",
+      href: "https://www.instagram.com/akbatteries_ro",
     },
     {
       icon: <Mail className="w-5 h-5 text-rose-600" />,
       title: "Email Support",
-      value: "akbattery.ro@gmail.com",
+      value: "akbatteries.ro@gmail.com",
       sub: "General & Sales inquiries",
-      href: "mailto:akbattery.ro@gmail.com",
+      href: "mailto:akbatteries.ro@gmail.com",
     },
     {
       icon: <MapPin className="w-5 h-5 text-rose-600" />,

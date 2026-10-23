@@ -36,10 +36,10 @@ export function Header() {
     { name: "Home", href: "/" },
     {
       name: "Products",
-      href: "/works",
+      href: "/batteries-inverters",
       dropdown: [
-        { name: "RO Water Purifier", href: "/water-purifier" },
         { name: "UPS Inverters & Batteries", href: "/batteries-inverters" },
+        { name: "RO Water Purifier", href: "/water-purifier" },
       ],
     },
     { name: "About us", href: "/about" },
@@ -111,9 +111,7 @@ export function Header() {
                   priority
                   loading="eager"
                 />
-                <span className="font-extrabold text-base sm:text-lg md:text-xl text-[#0B1B3A] tracking-tight uppercase whitespace-nowrap">
-                  AK BATTERIES
-                </span>
+               
               </Link>
             </div>
 
@@ -165,20 +163,20 @@ export function Header() {
             </nav>
 
 
-            {/* Mobile menu button */}
-            <div className="flex md:hidden">
+            {/* Mobile menu circular toggle (Matching reference design) */}
+            <div className="flex md:hidden items-center">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500"
+                className="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-md hover:bg-slate-800 active:scale-95 transition-all focus:outline-none cursor-pointer"
                 aria-controls="mobile-menu"
                 aria-expanded={isOpen}
               >
                 <span className="sr-only">Open main menu</span>
                 {isOpen ? (
-                  <X className="block h-6 w-6" aria-hidden="true" />
+                  <X className="block h-5 w-5" aria-hidden="true" />
                 ) : (
-                  <Menu className="block h-6 w-6" aria-hidden="true" />
+                  <Menu className="block h-5 w-5 stroke-[2.5]" aria-hidden="true" />
                 )}
               </button>
             </div>

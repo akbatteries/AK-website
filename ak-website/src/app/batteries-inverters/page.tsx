@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
-import { WorkContent } from "@/components/WorkContent";
+import { CategoryProducts } from "@/components/CategoryProducts";
 import Footer from "@/components/Footer";
 import { supabase } from "@/lib/supabase";
 
@@ -41,9 +41,8 @@ export default async function BatteriesInvertersPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <WorkContent
+        <CategoryProducts
           initialProducts={products}
-          showFilters={false}
           pageTitle="Inverter Batteries & Home UPS Systems in Kannamangalam"
           pageSubtitle="Explore heavy-duty tall tubular batteries, pure sine wave inverters, and home power backup units with doorstep delivery and installation."
         />
