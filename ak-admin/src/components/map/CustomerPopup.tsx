@@ -31,7 +31,7 @@ export default function CustomerPopup({ customer }: CustomerPopupProps) {
       case "Active":
         return "bg-emerald-50 text-emerald-700 border-emerald-100";
       case "Inactive":
-        return "bg-rose-50 text-rose-700 border-rose-100";
+        return "bg-red-50 text-red-700 border-red-100";
       case "AMC Due Soon":
         return "bg-amber-50 text-amber-700 border-amber-100";
       default:
@@ -48,7 +48,7 @@ export default function CustomerPopup({ customer }: CustomerPopupProps) {
           </h3>
           <div className="flex items-center gap-1 text-xs text-slate-600 font-semibold mt-0.5">
             <Phone className="w-3 h-3 text-slate-400 shrink-0" />
-            <a href={`tel:${customer.phone_number}`} className="hover:text-rose-600 transition-colors">
+            <a href={`tel:${customer.phone_number}`} className="hover:text-red-600 transition-colors">
               {customer.phone_number}
             </a>
           </div>

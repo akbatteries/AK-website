@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Button } from "./ui/Button";
+import { CONTACT_INFO } from "@/lib/constants";
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -53,38 +54,38 @@ export function ContactContent() {
 
   const contactDetails = [
     {
-      icon: <Phone className="w-5 h-5 text-rose-600" />,
+      icon: <Phone className="w-5 h-5 text-red-600" />,
       title: "Call Direct",
-      value: "+91 88705 34049",
+      value: CONTACT_INFO.phone,
       sub: "Mon - Sun, 8 AM - 9 PM",
-      href: "tel:+918870534049",
+      href: CONTACT_INFO.phoneHref,
     },
     {
-      icon: <InstagramIcon className="w-5 h-5 text-rose-600" />,
+      icon: <InstagramIcon className="w-5 h-5 text-red-600" />,
       title: "Instagram",
-      value: "@akbatteriesKannamangalam",
+      value: CONTACT_INFO.instagram,
       sub: "Follow us for updates & offers",
-      href: "https://www.instagram.com/akbatteries_ro",
+      href: CONTACT_INFO.instagramHref,
     },
     {
-      icon: <Mail className="w-5 h-5 text-rose-600" />,
+      icon: <Mail className="w-5 h-5 text-red-600" />,
       title: "Email Support",
-      value: "akbatteries.ro@gmail.com",
+      value: CONTACT_INFO.email,
       sub: "General & Sales inquiries",
-      href: "mailto:akbatteries.ro@gmail.com",
+      href: CONTACT_INFO.emailHref,
     },
     {
-      icon: <MapPin className="w-5 h-5 text-rose-600" />,
+      icon: <MapPin className="w-5 h-5 text-red-600" />,
       title: "Service Center",
-      value: "Main Road, Kannamangalam",
-      sub: "Tiruvannamalai DT, Tamil Nadu - 632311",
-      href: "https://maps.google.com/?q=Kannamangalam+Tamil+Nadu",
+      value: CONTACT_INFO.address,
+      sub: CONTACT_INFO.addressSub,
+      href: CONTACT_INFO.addressHref,
     },
     {
-      icon: <Clock className="w-5 h-5 text-rose-600" />,
+      icon: <Clock className="w-5 h-5 text-red-600" />,
       title: "Working Hours",
-      value: "8:00 AM - 9:00 PM",
-      sub: "Open 6 Days a week",
+      value: CONTACT_INFO.workingHours,
+      sub: CONTACT_INFO.workingDays,
     },
   ];
 
@@ -94,7 +95,7 @@ export function ContactContent() {
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold text-rose-600 uppercase tracking-widest bg-rose-50 px-3 py-1 rounded-md border border-rose-100 inline-block mb-4">
+          <span className="text-xs font-bold text-red-600 uppercase tracking-widest bg-red-50 px-3 py-1 rounded-md border border-red-100 inline-block mb-4">
             Get In Touch
           </span>
           <h1 className="text-gradient text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
@@ -107,51 +108,51 @@ export function ContactContent() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-5xl mx-auto items-stretch">
 
-        {/* Info cards (Left Column) */}
-        <div className="lg:col-span-5 flex flex-col justify-between">
-          <h2 className="text-lg font-extrabold text-[#0B1B3A] mb-4">
-            Reach Our Sales & Doorstep Technician Support Desk
-          </h2>
-          <div className="flex flex-col gap-4">
-            {contactDetails.map((detail, idx) => {
-              const cardContent = (
-                <div className="flex gap-4 p-5 bg-white rounded-md border border-slate-100/80 shadow-[0_4px_25px_rgba(15,23,42,0.01)] hover:shadow-[0_8px_30px_rgba(225,29,72,0.03)] hover:border-rose-100 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-md bg-rose-50 flex items-center justify-center border border-rose-100/50 flex-shrink-0">
-                    {detail.icon}
+          {/* Info cards (Left Column) */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
+            <h2 className="text-lg font-extrabold text-[#0B1B3A] mb-4">
+              Reach Our Sales & Doorstep Technician Support Desk
+            </h2>
+            <div className="flex flex-col gap-4">
+              {contactDetails.map((detail, idx) => {
+                const cardContent = (
+                  <div className="flex gap-4 p-5 bg-white rounded-md border border-slate-100/80 shadow-[0_4px_25px_rgba(15,23,42,0.01)] hover:shadow-[0_8px_30px_rgba(225,29,72,0.03)] hover:border-red-100 transition-all duration-300">
+                    <div className="w-10 h-10 rounded-md bg-red-50 flex items-center justify-center border border-red-100/50 flex-shrink-0">
+                      {detail.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+                        {detail.title}
+                      </h3>
+                      <span className="block text-slate-800 font-bold text-base select-all">
+                        {detail.value}
+                      </span>
+                      <span className="text-slate-500 text-xs mt-0.5 block font-medium">
+                        {detail.sub}
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
-                      {detail.title}
-                    </h3>
-                    <span className="block text-slate-800 font-bold text-base select-all">
-                      {detail.value}
-                    </span>
-                    <span className="text-slate-500 text-xs mt-0.5 block font-medium">
-                      {detail.sub}
-                    </span>
-                  </div>
-                </div>
-              );
+                );
 
-              return detail.href ? (
-                <a key={idx} href={detail.href} target="_blank" rel="noopener noreferrer" className="block select-none">
-                  {cardContent}
-                </a>
-              ) : (
-                <div key={idx}>{cardContent}</div>
-              );
-            })}
+                return detail.href ? (
+                  <a key={idx} href={detail.href} target="_blank" rel="noopener noreferrer" className="block select-none">
+                    {cardContent}
+                  </a>
+                ) : (
+                  <div key={idx}>{cardContent}</div>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* Map Viewport Card (Right Column) */}
-        <div className="lg:col-span-7 flex flex-col">
-          <h2 className="text-lg font-extrabold text-[#0B1B3A] mb-4">
-            Our Store & Service Location in Kannamangalam
-          </h2>
-          <div className="overflow-hidden rounded-md border border-slate-100/80 bg-white shadow-[0_4px_30px_rgba(15,23,42,0.02)] flex-1 min-h-[350px] lg:min-h-[500px]">
+          {/* Map Viewport Card (Right Column) */}
+          <div className="lg:col-span-7 flex flex-col">
+            <h2 className="text-lg font-extrabold text-[#0B1B3A] mb-4">
+              Our Store & Service Location in Kannamangalam
+            </h2>
+            <div className="overflow-hidden rounded-md border border-slate-100/80 bg-white shadow-[0_4px_30px_rgba(15,23,42,0.02)] flex-1 min-h-[350px] lg:min-h-[500px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31131.74113150527!2d79.14472230348446!3d12.748114010933149!2m3!1f0!2f0!3f0!2m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad24da3fd889dd%3A0x4f225e48db513b55!2sKannamangalam%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1783667398885!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d231.8185817139673!2d79.15132244018979!3d12.745231529951482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDQ0JzQyLjkiTiA3OcKwMDknMDUuMSJF!5e1!3m2!1sen!2sin!4v1792905402862!5m2!1sen!2sin"
                 className="w-full h-full"
                 style={{ border: 0 }}
                 loading="lazy"

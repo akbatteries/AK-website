@@ -480,7 +480,7 @@ export default function ProductsPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-mesh-gradient">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-rose-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-slate-500 text-sm font-semibold">Authenticating...</p>
         </div>
       </div>
@@ -512,7 +512,7 @@ export default function ProductsPage() {
             <span className="text-xl font-bold text-slate-900 mt-0.5">{statistics.batteries}</span>
           </div>
           <div className="bg-white rounded-md p-4 border border-slate-100 shadow-sm flex flex-col justify-center">
-            <span className="text-[10px] font-extrabold text-rose-600 uppercase tracking-widest">Water Purifiers</span>
+            <span className="text-[10px] font-extrabold text-red-600 uppercase tracking-widest">Water Purifiers</span>
             <span className="text-xl font-bold text-slate-900 mt-0.5">{statistics.purifiers}</span>
           </div>
         </section>
@@ -523,7 +523,7 @@ export default function ProductsPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="w-full md:w-64 h-11 pl-4 pr-10 rounded-md border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 appearance-none cursor-pointer"
+              className="w-full md:w-64 h-11 pl-4 pr-10 rounded-md border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 appearance-none cursor-pointer"
             >
               <option value="All">All Products ({statistics.total})</option>
               <option value="ups inventer & batteries">UPS Inverters ({statistics.batteries})</option>
@@ -545,7 +545,7 @@ export default function ProductsPage() {
                 placeholder="Search by brand name"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-11 pl-10 pr-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-805 transition-all bg-white"
+                className="w-full h-11 pl-10 pr-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-805 transition-all bg-white"
               />
             </div>
           </div>
@@ -562,7 +562,7 @@ export default function ProductsPage() {
         <section className="bg-white rounded-md border border-slate-100 shadow-sm overflow-hidden">
           {productsLoading ? (
             <div className="p-16 flex flex-col items-center justify-center gap-3">
-              <div className="w-8 h-8 border-3 border-rose-500 border-t-transparent rounded-md animate-spin"></div>
+              <div className="w-8 h-8 border-3 border-red-500 border-t-transparent rounded-md animate-spin"></div>
               <p className="text-slate-400 text-xs font-semibold">Loading product database...</p>
             </div>
           ) : filteredProducts.length === 0 ? (
@@ -644,7 +644,7 @@ export default function ProductsPage() {
                         <td className="py-4 px-6">
                           <span className={`text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider border ${product.category === "ups inventer & batteries"
                             ? "bg-amber-50 text-amber-700 border-amber-100/70"
-                            : "bg-rose-50 text-rose-700 border-rose-100/70"
+                            : "bg-red-50 text-red-700 border-red-100/70"
                             }`}>
                             {product.category === "ups inventer & batteries" ? "UPS Inverters" : "Water Purifier"}
                           </span>
@@ -655,7 +655,7 @@ export default function ProductsPage() {
                           </span>
                         </td>
                         <td className="py-4 px-6">
-                          <span className="text-lg font-black text-slate-900 select-all group-hover:text-rose-600 transition-colors">
+                          <span className="text-lg font-black text-slate-900 select-all group-hover:text-red-600 transition-colors">
                             {product.price}
                           </span>
                         </td>
@@ -696,7 +696,7 @@ export default function ProductsPage() {
                     setPageSize(Number(e.target.value));
                     setCurrentPage(1);
                   }}
-                  className="h-9 px-3 border border-slate-200 rounded-md bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500"
+                  className="h-9 px-3 border border-slate-200 rounded-md bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500"
                 >
                   <option value={10}>10</option>
                   <option value={30}>30</option>
@@ -756,7 +756,7 @@ export default function ProductsPage() {
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white"
                     >
                       <option value="ups inventer & batteries">UPS Inverter & Batteries</option>
                       <option value="water purifier">Water Purifier</option>
@@ -770,7 +770,7 @@ export default function ProductsPage() {
                       placeholder="e.g. Exide, Luminous"
                       value={brandName}
                       onChange={(e) => setBrandName(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -784,7 +784,7 @@ export default function ProductsPage() {
                       placeholder="e.g. ₹14499"
                       value={mrp}
                       onChange={(e) => setMrp(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -796,7 +796,7 @@ export default function ProductsPage() {
                       placeholder="e.g. ₹12999"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -808,7 +808,7 @@ export default function ProductsPage() {
                     placeholder="Describe should seperated by commas"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full h-20 p-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-805 resize-none"
+                    className="w-full h-20 p-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-805 resize-none"
                   />
                 </div>
 
@@ -832,7 +832,7 @@ export default function ProductsPage() {
                     </div>
                   )}
 
-                  <div className="border-2 border-dashed border-slate-200/80 rounded-md p-6 text-center hover:border-rose-300 transition-colors flex flex-col items-center bg-slate-50/50 relative">
+                  <div className="border-2 border-dashed border-slate-200/80 rounded-md p-6 text-center hover:border-red-300 transition-colors flex flex-col items-center bg-slate-50/50 relative">
                     <Upload className="w-8 h-8 text-slate-400 mb-2.5 pointer-events-none" />
                     <p className="text-xs text-slate-500 font-semibold mb-1">Click to select files</p>
                     <p className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Multiple images supported</p>
@@ -859,7 +859,7 @@ export default function ProductsPage() {
                 <button
                   type="submit"
                   disabled={formSubmitting}
-                  className="h-11 px-6 bg-rose-600 hover:bg-rose-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-rose-200 flex items-center justify-center gap-2"
+                  className="h-11 px-6 bg-red-600 hover:bg-red-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-red-200 flex items-center justify-center gap-2"
                 >
                   {formSubmitting ? (
                     <>
@@ -912,7 +912,7 @@ export default function ProductsPage() {
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white"
                     >
                       <option value="ups inventer & batteries">UPS Inverter & Batteries</option>
                       <option value="water purifier">Water Purifier</option>
@@ -926,7 +926,7 @@ export default function ProductsPage() {
                       placeholder="e.g. Exide, Luminous"
                       value={brandName}
                       onChange={(e) => setBrandName(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -940,7 +940,7 @@ export default function ProductsPage() {
                       placeholder="e.g. ₹14,499"
                       value={mrp}
                       onChange={(e) => setMrp(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-805"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-805"
                       required
                     />
                   </div>
@@ -952,7 +952,7 @@ export default function ProductsPage() {
                       placeholder="e.g. ₹12,999"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -964,7 +964,7 @@ export default function ProductsPage() {
                     placeholder="Describe the product or installation details..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full h-20 p-3.5 rounded-md border border-slate-200/80 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-805 resize-none"
+                    className="w-full h-20 p-3.5 rounded-md border border-slate-200/80 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-805 resize-none"
                   />
                 </div>
 
@@ -981,9 +981,8 @@ export default function ProductsPage() {
                             type="button"
                             onClick={() => removeExistingImage(index)}
                             disabled={deletingImageIndex === index}
-                            className={`absolute inset-0 bg-slate-900/60 flex items-center justify-center transition-opacity text-white text-[10px] font-bold ${
-                              deletingImageIndex === index ? "opacity-100 cursor-not-allowed" : "opacity-0 group-hover:opacity-100"
-                            }`}
+                            className={`absolute inset-0 bg-slate-900/60 flex items-center justify-center transition-opacity text-white text-[10px] font-bold ${deletingImageIndex === index ? "opacity-100 cursor-not-allowed" : "opacity-0 group-hover:opacity-100"
+                              }`}
                           >
                             {deletingImageIndex === index ? "Deleting..." : "Delete"}
                           </button>
@@ -1007,7 +1006,7 @@ export default function ProductsPage() {
                     </div>
                   )}
 
-                  <div className="border-2 border-dashed border-slate-200/80 rounded-md p-6 text-center hover:border-rose-300 transition-colors flex flex-col items-center bg-slate-50/50 relative">
+                  <div className="border-2 border-dashed border-slate-200/80 rounded-md p-6 text-center hover:border-red-300 transition-colors flex flex-col items-center bg-slate-50/50 relative">
                     <Upload className="w-8 h-8 text-slate-400 mb-2.5 pointer-events-none" />
                     <p className="text-xs text-slate-500 font-semibold mb-1">Click to select files</p>
                     <input
@@ -1063,7 +1062,7 @@ export default function ProductsPage() {
           resetForm();
           setIsAddModalOpen(true);
         }}
-        className="fixed bottom-20 right-6 lg:bottom-8 lg:right-8 z-[60] h-14 w-14 lg:h-14 lg:w-auto lg:px-6 bg-rose-600 hover:bg-rose-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-rose-500/30 hover:scale-105"
+        className="fixed bottom-20 right-6 lg:bottom-8 lg:right-8 z-[60] h-14 w-14 lg:h-14 lg:w-auto lg:px-6 bg-red-600 hover:bg-red-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-red-500/30 hover:scale-105"
         title="Add new product"
       >
         <Plus className="w-5 h-5 shrink-0" />

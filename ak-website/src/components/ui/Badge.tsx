@@ -12,7 +12,7 @@ export function Badge({ className = "", variant = "primary", ...props }: BadgePr
     primary: "bg-slate-100 text-slate-800 border border-slate-200/50",
     secondary: "bg-white text-slate-700 border border-slate-100 shadow-sm",
     accent:
-      "bg-rose-50 text-rose-600 border border-rose-100 shadow-[0_2px_10px_rgba(225,29,72,0.06)]",
+      "bg-red-50 text-red-600 border border-red-100 shadow-[0_2px_10px_rgba(225,29,72,0.06)]",
   };
 
   return (

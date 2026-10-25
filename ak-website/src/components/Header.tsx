@@ -4,7 +4,8 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, PhoneCall, ChevronDown, BadgeCheck, Wrench, UserCheck, ShieldCheck, Tag, Zap, MapPin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, PhoneCall, ChevronDown, BadgeCheck, Wrench, UserCheck, ShieldCheck, Tag, Zap, MapPin, Home, Battery, Droplets, Phone, HelpCircle, Info } from "lucide-react";
 import { Button } from "./ui/Button";
 import { EnquiryModal } from "./EnquiryModal";
 
@@ -103,7 +104,7 @@ export function Header() {
                 className="flex items-center gap-2.5 select-none transition-transform hover:scale-105"
               >
                 <Image
-                  src="/logo.svg"
+                  src="/new logo.svg"
                   alt="AK Batteries Logo"
                   width={44}
                   height={44}
@@ -111,7 +112,7 @@ export function Header() {
                   priority
                   loading="eager"
                 />
-               
+
               </Link>
             </div>
 
@@ -123,7 +124,7 @@ export function Header() {
                   return (
                     <div key={item.name} className="relative group flex items-center h-full py-4">
                       <button
-                        className={`px-4 py-2 text-sm font-semibold rounded-md transition-all duration-300 flex items-center gap-1 text-slate-600 hover:text-rose-600 hover:bg-slate-50 focus:outline-none ${isDropdownActive ? "text-rose-600 bg-rose-50/50" : ""
+                        className={`px-4 py-2 text-sm font-semibold rounded-md transition-all duration-300 flex items-center gap-1 text-slate-600 hover:text-red-600 hover:bg-slate-50 focus:outline-none ${isDropdownActive ? "text-red-600 bg-red-50/50" : ""
                           }`}
                       >
                         <span>{item.name}</span>
@@ -136,7 +137,7 @@ export function Header() {
                             key={sub.name}
                             href={sub.href}
                             onClick={handleNavClick}
-                            className={`block px-4 py-2.5 text-xs font-bold transition-colors uppercase tracking-wider ${pathname === sub.href ? "text-rose-600 bg-rose-50/20" : "text-slate-600 hover:text-rose-600 hover:bg-slate-50"
+                            className={`block px-4 py-2.5 text-xs font-bold transition-colors uppercase tracking-wider ${pathname === sub.href ? "text-red-600 bg-red-50/20" : "text-slate-600 hover:text-red-600 hover:bg-slate-50"
                               }`}
                           >
                             {sub.name}
@@ -152,7 +153,7 @@ export function Header() {
                     href={item.href}
                     onClick={handleNavClick}
                     className={`relative px-4 py-2 text-sm font-semibold rounded-md transition-colors duration-300 ${activeItem === item.name
-                      ? "text-rose-600 bg-rose-50/50"
+                      ? "text-red-600 bg-red-50/50"
                       : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                       }`}
                   >
@@ -183,50 +184,35 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu Panel */}
+        {/* Mobile Menu Panel — only About Us, FAQ, Place Order */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-b border-slate-100 ${isOpen ? "max-h-[450px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-b border-slate-100 ${isOpen ? "max-h-[350px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
             }`}
           id="mobile-menu"
         >
           <div className="px-4 pt-2 pb-6 space-y-2">
-            {navItems.map((item) => {
-              if (item.dropdown) {
-                return (
-                  <div key={item.name} className="space-y-1">
-                    <div className="px-4 pt-2 pb-1 text-xs font-bold text-slate-400 uppercase tracking-widest select-none">
-                      {item.name}
-                    </div>
-                    {item.dropdown.map((sub) => (
-                      <Link
-                        key={sub.name}
-                        href={sub.href}
-                        onClick={handleNavClick}
-                        className={`block px-6 py-2 rounded-md text-sm font-semibold transition-colors duration-200 ${pathname === sub.href
-                          ? "text-rose-600 bg-rose-50 font-bold"
-                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-                          }`}
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                );
-              }
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={handleNavClick}
-                  className={`block px-4 py-2.5 rounded-md text-base font-semibold transition-colors duration-200 ${activeItem === item.name
-                    ? "text-rose-600 bg-rose-50 font-bold"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-                    }`}
-                >
-                  {item.name}
-                </Link>
-              );
-            })}
+            <Link
+              href="/about"
+              onClick={handleNavClick}
+              className={`flex items-center gap-3 px-4 py-2.5 rounded-md text-base font-semibold transition-colors duration-200 ${pathname === "/about"
+                ? "text-red-600 bg-red-50 font-bold"
+                : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+            >
+              <Info className="w-4 h-4" />
+              About us
+            </Link>
+            <Link
+              href="/faq"
+              onClick={handleNavClick}
+              className={`flex items-center gap-3 px-4 py-2.5 rounded-md text-base font-semibold transition-colors duration-200 ${pathname === "/faq"
+                ? "text-red-600 bg-red-50 font-bold"
+                : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+            >
+              <HelpCircle className="w-4 h-4" />
+              FAQ
+            </Link>
             <div className="pt-4 border-t border-slate-100 px-4">
               <Button
                 variant="primary"
@@ -246,6 +232,52 @@ export function Header() {
 
         <EnquiryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </header>
+
+
+      {/* Mobile Bottom Navigation Bar */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-slate-200/80 shadow-[0_-2px_16px_rgba(15,23,42,0.08)] pb-[env(safe-area-inset-bottom)]">
+        <div className="flex items-center justify-around h-16 px-2">
+          {[
+            { name: "Home", href: "/", icon: Home },
+            { name: "Batteries", href: "/batteries-inverters", icon: Battery },
+            { name: "RO", href: "/water-purifier", icon: Droplets },
+            { name: "Contact", href: "/contact", icon: Phone },
+          ].map((tab) => {
+            const isActive = pathname === tab.href;
+            const TabIcon = tab.icon;
+            return (
+              <Link
+                key={tab.name}
+                href={tab.href}
+                className="relative flex flex-col items-center justify-center gap-1 min-w-[60px] py-1.5 select-none"
+              >
+                {/* Active indicator pill that slides between tabs */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabIndicator"
+                    className="absolute -top-[1px] w-8 h-[3px] rounded-full bg-red-500"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <motion.div
+                  className="flex items-center justify-center w-8 h-8 rounded-xl"
+                  animate={{ scale: isActive ? 1.1 : 1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                >
+                  <TabIcon
+                    className={`w-5 h-5 transition-colors duration-200 ${isActive ? "text-red-600 stroke-[2.5]" : "text-slate-400 stroke-[1.8]"
+                      }`}
+                  />
+                </motion.div>
+                <span className={`text-[10px] font-semibold tracking-wide leading-none ${isActive ? "text-red-600" : "text-slate-400"
+                  }`}>
+                  {tab.name}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </div>
   );
 }

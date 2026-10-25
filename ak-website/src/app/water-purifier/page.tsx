@@ -44,7 +44,7 @@ export default async function WaterPurifierPage() {
         <CategoryProducts
           initialProducts={products}
           pageTitle="RO Water Purifier Sales, Service & Filter Repair in Kannamangalam"
-          pageSubtitle="Discover advanced multi-stage RO+UV+UF+Alkaline purification systems with free doorstep installation and expert filter maintenance."
+          pageSubtitle="Discover multi-stage RO+UV+UF+Alkaline purification systems with free doorstep installation and expert filter maintenance."
         />
       </main>
       <Footer />

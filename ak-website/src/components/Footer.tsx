@@ -3,6 +3,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Mail, Phone, Pin } from "lucide-react";
+import { CONTACT_INFO } from "@/lib/constants";
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
@@ -32,7 +33,7 @@ export default function Footer() {
                     <div>
                         <div className="flex items-center gap-3 mb-4">
                             <Image
-                                src="/logo.svg"
+                                src="/new logo.svg"
                                 alt="AK Batteries Logo"
                                 width={36}
                                 height={36}
@@ -50,13 +51,13 @@ export default function Footer() {
                         {/* Social Links */}
                         <div className="flex items-center gap-3 mt-5">
                             <a
-                                href="https://www.instagram.com/kaviprasath_269"
+                                href={CONTACT_INFO.instagramHref}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Follow AK Batteries on Instagram"
-                                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800/90 hover:bg-rose-950/40 text-slate-300 hover:text-rose-400 border border-slate-700/80 hover:border-rose-500/40 transition-all duration-300 text-xs font-semibold group shadow-xs"
+                                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800/90 hover:bg-red-950/40 text-slate-300 hover:text-red-400 border border-slate-700/80 hover:border-red-500/40 transition-all duration-300 text-xs font-semibold group shadow-xs"
                             >
-                                <InstagramIcon className="w-4 h-4 text-rose-500 group-hover:scale-110 transition-transform duration-300" />
+                                <InstagramIcon className="w-4 h-4 text-red-500 group-hover:scale-110 transition-transform duration-300" />
                                 <span>Follow on Instagram</span>
                             </a>
                         </div>
@@ -74,7 +75,7 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/batteries-inverters" className="hover:text-rose-400 transition-colors flex items-center gap-1.5 font-medium">
+                                <Link href="/batteries-inverters" className="hover:text-red-400 transition-colors flex items-center gap-1.5 font-medium">
                                     UPS Inverters & Batteries
                                 </Link>
                             </li>
@@ -109,36 +110,36 @@ export default function Footer() {
 
                         <div className="space-y-4 text-sm">
 
-                            <div className="flex items-start gap-3">
-                                <Pin className="w-5 h-5 mt-0.5 text-rose-500 shrink-0" />
+                            <a href={CONTACT_INFO.addressHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-white transition-colors">
+                                <Pin className="w-5 h-5 mt-0.5 text-red-500 shrink-0" />
                                 <span className="leading-6">
-                                    Main Road, Kannamangalam, Tiruvannamalai DT, Tamil Nadu - 632311
+                                    {CONTACT_INFO.address}, {CONTACT_INFO.addressSub}
                                 </span>
-                            </div>
+                            </a>
 
                             <div className="flex items-center gap-3">
-                                <Phone className="w-5 h-5 " />
+                                <Phone className="w-5 h-5" />
                                 <a
-                                    href="tel:+918870534049"
+                                    href={CONTACT_INFO.phoneHref}
                                     className="hover:text-white transition-colors"
                                 >
-                                    +91 88705 34049
+                                    {CONTACT_INFO.phone}
                                 </a>
                             </div>
 
                             <div className="flex items-center gap-3">
                                 <Mail className="w-5 h-5" />
                                 <a
-                                    href="mailto:akbattery.ro@gmail.com"
+                                    href={CONTACT_INFO.emailHref}
                                     className="hover:text-white transition-colors break-all"
                                 >
-                                    akbattery.ro@gmail.com
+                                    {CONTACT_INFO.email}
                                 </a>
                             </div>
 
                             <div className="flex items-center gap-3">
                                 <Clock className="w-5 h-5" />
-                                <span>Mon - Sat : 9:00 AM - 7:00 PM</span>
+                                <span>{CONTACT_INFO.workingDays} : {CONTACT_INFO.workingHours}</span>
                             </div>
 
                         </div>

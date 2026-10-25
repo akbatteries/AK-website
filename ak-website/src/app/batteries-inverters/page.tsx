@@ -43,8 +43,8 @@ export default async function BatteriesInvertersPage() {
       <main className="flex-grow">
         <CategoryProducts
           initialProducts={products}
-          pageTitle="Inverter Batteries & Home UPS Systems in Kannamangalam"
-          pageSubtitle="Explore heavy-duty tall tubular batteries, pure sine wave inverters, and home power backup units with doorstep delivery and installation."
+          pageTitle="Inverter Batteries & UPS Systems in Kannamangalam"
+          pageSubtitle="Explore tall tubular batteries, pure sine wave inverters, and power backup units with doorstep delivery and installation."
         />
       </main>
       <Footer />

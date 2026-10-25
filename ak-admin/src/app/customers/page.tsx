@@ -466,7 +466,7 @@ Thank you!`;
     return (
       <div className="min-h-screen flex items-center justify-center bg-mesh-gradient">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-rose-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-slate-500 text-sm font-semibold">Authenticating...</p>
         </div>
       </div>
@@ -495,7 +495,7 @@ Thank you!`;
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full md:w-48 h-10 px-3 pr-10 rounded-md border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 appearance-none cursor-pointer"
+              className="w-full md:w-48 h-10 px-3 pr-10 rounded-md border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 appearance-none cursor-pointer"
             >
               <option value="All">All Statuses</option>
               <option value="Active">Active Status</option>
@@ -517,7 +517,7 @@ Thank you!`;
               placeholder="Search by Name, Place, Phone..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-10 pl-9 pr-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800"
+              className="w-full h-10 pl-9 pr-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800"
             />
             {searchQuery && (
               <button
@@ -532,16 +532,16 @@ Thank you!`;
 
         {/* Selected Customers Action Bar */}
         {selectedCustomerIds.length > 0 && (
-          <div className="bg-rose-50 border border-rose-200 rounded-md p-4 mb-6 flex items-center justify-between animate-in fade-in duration-200 shadow-xs">
+          <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-6 flex items-center justify-between animate-in fade-in duration-200 shadow-xs">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-rose-600 animate-pulse"></span>
-              <span className="text-xs font-bold text-rose-900">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+              <span className="text-xs font-bold text-red-900">
                 {selectedCustomerIds.length} customer{selectedCustomerIds.length > 1 ? "s" : ""} selected
               </span>
             </div>
             <button
               onClick={handleBulkDelete}
-              className="h-9 px-4 bg-rose-600 hover:bg-rose-700 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm shadow-rose-200"
+              className="h-9 px-4 bg-red-600 hover:bg-red-700 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm shadow-red-200"
             >
               <Trash2 className="w-4 h-4" />
               <span>Delete Selected ({selectedCustomerIds.length})</span>
@@ -560,7 +560,7 @@ Thank you!`;
         <section className="bg-white rounded-md border border-slate-100 shadow-sm overflow-hidden">
           {customersLoading ? (
             <div className="py-24 flex flex-col items-center justify-center gap-4">
-              <div className="w-10 h-10 border-4 border-rose-500 border-t-transparent rounded-md animate-spin"></div>
+              <div className="w-10 h-10 border-4 border-red-500 border-t-transparent rounded-md animate-spin"></div>
               <p className="text-slate-400 text-xs font-semibold">Loading customers directory...</p>
             </div>
           ) : customers.length === 0 ? (
@@ -585,7 +585,7 @@ Thank you!`;
                           type="checkbox"
                           checked={customers.length > 0 && customers.every((c) => selectedCustomerIds.includes(c.id))}
                           onChange={toggleSelectAll}
-                          className="w-4 h-4 rounded border-slate-300 text-rose-600 focus:ring-rose-500 cursor-pointer accent-rose-600"
+                          className="w-4 h-4 rounded border-slate-300 text-red-600 focus:ring-red-500 cursor-pointer accent-red-600"
                           title="Select All"
                         />
                       </th>
@@ -606,7 +606,7 @@ Thank you!`;
                         <tr
                           key={customer.id}
                           className={`transition-colors ${isSelected
-                            ? "bg-rose-50/50 hover:bg-rose-50/70"
+                            ? "bg-red-50/50 hover:bg-red-50/70"
                             : isInactive
                               ? "bg-slate-50/70 text-slate-505 hover:bg-slate-100/50"
                               : "hover:bg-slate-50/30"
@@ -617,7 +617,7 @@ Thank you!`;
                               type="checkbox"
                               checked={isSelected}
                               onChange={() => toggleSelectCustomer(customer.id)}
-                              className="w-4 h-4 rounded border-slate-300 text-rose-600 focus:ring-rose-500 cursor-pointer accent-rose-600"
+                              className="w-4 h-4 rounded border-slate-300 text-red-600 focus:ring-red-500 cursor-pointer accent-red-600"
                             />
                           </td>
                           <td className={`py-4 px-6 font-bold ${isInactive ? "text-slate-700" : "text-slate-900"}`}>{customer.customer_name}</td>
@@ -625,11 +625,11 @@ Thank you!`;
                             <button
                               type="button"
                               onClick={() => openContactModal(customer)}
-                              className={`inline-flex items-center gap-1.5 font-semibold group transition-colors underline-offset-2 hover:underline cursor-pointer ${isInactive ? "text-slate-500 hover:text-rose-600" : "text-slate-700 hover:text-rose-600"
+                              className={`inline-flex items-center gap-1.5 font-semibold group transition-colors underline-offset-2 hover:underline cursor-pointer ${isInactive ? "text-slate-500 hover:text-red-600" : "text-slate-700 hover:text-red-600"
                                 }`}
                               title="Click to Call or WhatsApp"
                             >
-                              <Phone className="w-3.5 h-3.5 text-rose-500 opacity-75 group-hover:opacity-100 transition-opacity shrink-0" />
+                              <Phone className="w-3.5 h-3.5 text-red-500 opacity-75 group-hover:opacity-100 transition-opacity shrink-0" />
                               <span>{customer.phone_number}</span>
                             </button>
                           </td>
@@ -643,7 +643,7 @@ Thank you!`;
                                 }
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-slate-800 hover:text-rose-600 font-semibold group transition-colors underline-offset-2 hover:underline"
+                                className="inline-flex items-center gap-1.5 text-slate-800 hover:text-red-600 font-semibold group transition-colors underline-offset-2 hover:underline"
                                 title="Open place in Google Maps"
                               >
                                 <span>{customer.place}</span>
@@ -657,7 +657,7 @@ Thank you!`;
                           <td className="py-4 px-6">
                             <span
                               className={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-wide border ${isInactive
-                                ? "bg-rose-50 border-rose-100 text-rose-700"
+                                ? "bg-red-50 border-red-100 text-red-700"
                                 : "bg-emerald-50 border-emerald-100 text-emerald-700"
                                 }`}
                             >
@@ -677,7 +677,7 @@ Thank you!`;
                               <button
                                 onClick={() => openEditModal(customer)}
                                 title="Edit Customer"
-                                className="h-8 px-3 border border-slate-200 text-slate-700 hover:text-rose-600 hover:border-rose-200 hover:bg-rose-50/40 rounded-md flex items-center gap-1.5 text-xs font-bold transition-all bg-white"
+                                className="h-8 px-3 border border-slate-200 text-slate-700 hover:text-red-600 hover:border-red-200 hover:bg-red-50/40 rounded-md flex items-center gap-1.5 text-xs font-bold transition-all bg-white"
                               >
                                 <Edit className="w-3.5 h-3.5 text-slate-500" />
                                 <span>Edit</span>
@@ -702,7 +702,7 @@ Thank you!`;
                       setPageSize(Number(e.target.value));
                       setCurrentPage(1);
                     }}
-                    className="h-9 px-3 border border-slate-200 rounded-md bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500"
+                    className="h-9 px-3 border border-slate-200 rounded-md bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500"
                   >
                     <option value={10}>10</option>
                     <option value={30}>30</option>
@@ -769,7 +769,7 @@ Thank you!`;
                     placeholder="e.g. John Doe"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
-                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                     required
                   />
                 </div>
@@ -782,7 +782,7 @@ Thank you!`;
                       placeholder="e.g. 9876543210"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -794,7 +794,7 @@ Thank you!`;
                       placeholder="e.g. Rohini, Sector 5"
                       value={place}
                       onChange={(e) => setPlace(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -808,7 +808,7 @@ Thank you!`;
                       placeholder="e.g. Exide 150AH + Luminous UPS"
                       value={productName}
                       onChange={(e) => setProductName(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -819,7 +819,7 @@ Thank you!`;
                       type="date"
                       value={installationDate}
                       onChange={(e) => setInstallationDate(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white"
                       required
                     />
                   </div>
@@ -833,11 +833,11 @@ Thank you!`;
                       type="button"
                       onClick={handleGetLocation}
                       disabled={gettingLocation}
-                      className="h-8 px-3.5 bg-rose-50 hover:bg-rose-100/80 text-rose-600 rounded-md text-[10px] font-extrabold uppercase tracking-wider transition-all flex items-center gap-1.5 disabled:opacity-50"
+                      className="h-8 px-3.5 bg-red-50 hover:bg-red-100/80 text-red-600 rounded-md text-[10px] font-extrabold uppercase tracking-wider transition-all flex items-center gap-1.5 disabled:opacity-50"
                     >
                       {gettingLocation ? (
                         <>
-                          <div className="w-3 h-3 border-2 border-rose-600 border-t-transparent rounded-md animate-spin"></div>
+                          <div className="w-3 h-3 border-2 border-red-600 border-t-transparent rounded-md animate-spin"></div>
                           <span>Acquiring...</span>
                         </>
                       ) : (
@@ -864,7 +864,7 @@ Thank you!`;
                         placeholder="e.g. 13.0827"
                         value={latitude}
                         onChange={(e) => setLatitude(e.target.value)}
-                        className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800 bg-white"
+                        className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800 bg-white"
                       />
                     </div>
                     <div>
@@ -874,7 +874,7 @@ Thank you!`;
                         placeholder="e.g. 80.2707"
                         value={longitude}
                         onChange={(e) => setLongitude(e.target.value)}
-                        className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800 bg-white"
+                        className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800 bg-white"
                       />
                     </div>
                   </div>
@@ -885,7 +885,7 @@ Thank you!`;
                   <select
                     value={maintenancePeriod}
                     onChange={(e) => setMaintenancePeriod(Number(e.target.value) as 3 | 6 | 9 | 12)}
-                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white"
+                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white"
                   >
                     <option value={3}>3 Months</option>
                     <option value={6}>6 Months</option>
@@ -907,7 +907,7 @@ Thank you!`;
                 <button
                   type="submit"
                   disabled={formSubmitting}
-                  className="h-11 px-6 bg-rose-600 hover:bg-rose-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-rose-200 flex items-center justify-center gap-2"
+                  className="h-11 px-6 bg-red-600 hover:bg-red-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-red-200 flex items-center justify-center gap-2"
                 >
                   {formSubmitting ? (
                     <>
@@ -957,7 +957,7 @@ Thank you!`;
                     placeholder="e.g. John Doe"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
-                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                     required
                   />
                 </div>
@@ -970,7 +970,7 @@ Thank you!`;
                       placeholder="e.g. 9876543210"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -982,7 +982,7 @@ Thank you!`;
                       placeholder="e.g. Rohini, Sector 5"
                       value={place}
                       onChange={(e) => setPlace(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -996,7 +996,7 @@ Thank you!`;
                       placeholder="e.g. Exide 150AH + Luminous UPS"
                       value={productName}
                       onChange={(e) => setProductName(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                       required
                     />
                   </div>
@@ -1007,7 +1007,7 @@ Thank you!`;
                       type="date"
                       value={installationDate}
                       onChange={(e) => setInstallationDate(e.target.value)}
-                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white"
+                      className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white"
                       required
                     />
                   </div>
@@ -1021,11 +1021,11 @@ Thank you!`;
                       type="button"
                       onClick={handleGetLocation}
                       disabled={gettingLocation}
-                      className="h-8 px-3.5 bg-rose-50 hover:bg-rose-100/80 text-rose-600 rounded-md text-[10px] font-extrabold uppercase tracking-wider transition-all flex items-center gap-1.5 disabled:opacity-50"
+                      className="h-8 px-3.5 bg-red-50 hover:bg-red-100/80 text-red-600 rounded-md text-[10px] font-extrabold uppercase tracking-wider transition-all flex items-center gap-1.5 disabled:opacity-50"
                     >
                       {gettingLocation ? (
                         <>
-                          <div className="w-3 h-3 border-2 border-rose-600 border-t-transparent rounded-md animate-spin"></div>
+                          <div className="w-3 h-3 border-2 border-red-600 border-t-transparent rounded-md animate-spin"></div>
                           <span>Acquiring...</span>
                         </>
                       ) : (
@@ -1052,7 +1052,7 @@ Thank you!`;
                         placeholder="e.g. 13.0827"
                         value={latitude}
                         onChange={(e) => setLatitude(e.target.value)}
-                        className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800 bg-white"
+                        className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800 bg-white"
                       />
                     </div>
                     <div>
@@ -1062,7 +1062,7 @@ Thank you!`;
                         placeholder="e.g. 80.2707"
                         value={longitude}
                         onChange={(e) => setLongitude(e.target.value)}
-                        className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800 bg-white"
+                        className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800 bg-white"
                       />
                     </div>
                   </div>
@@ -1073,7 +1073,7 @@ Thank you!`;
                   <select
                     value={maintenancePeriod}
                     onChange={(e) => setMaintenancePeriod(Number(e.target.value) as 3 | 6 | 9 | 12)}
-                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white"
+                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white"
                   >
                     <option value={3}>3 Months</option>
                     <option value={6}>6 Months</option>
@@ -1095,7 +1095,7 @@ Thank you!`;
                 <button
                   type="submit"
                   disabled={formSubmitting}
-                  className="h-11 px-6 bg-rose-600 hover:bg-rose-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-rose-200 flex items-center justify-center gap-2"
+                  className="h-11 px-6 bg-red-600 hover:bg-red-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-red-200 flex items-center justify-center gap-2"
                 >
                   {formSubmitting ? (
                     <>
@@ -1140,7 +1140,7 @@ Thank you!`;
                   </div>
                   <span
                     className={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-wide border shrink-0 ${selectedCustomer.status === "Inactive"
-                      ? "bg-rose-50 border-rose-100 text-rose-700"
+                      ? "bg-red-50 border-red-100 text-red-700"
                       : "bg-emerald-50 border-emerald-100 text-emerald-700"
                       }`}
                   >
@@ -1157,10 +1157,10 @@ Thank you!`;
                         setIsViewModalOpen(false);
                         openContactModal(selectedCustomer);
                       }}
-                      className="text-slate-800 hover:text-rose-600 font-semibold mt-0.5 inline-flex items-center gap-1.5 group transition-colors underline-offset-2 hover:underline cursor-pointer"
+                      className="text-slate-800 hover:text-red-600 font-semibold mt-0.5 inline-flex items-center gap-1.5 group transition-colors underline-offset-2 hover:underline cursor-pointer"
                       title="Click to Call or WhatsApp"
                     >
-                      <Phone className="w-3.5 h-3.5 text-rose-500 opacity-75 group-hover:opacity-100 transition-opacity shrink-0" />
+                      <Phone className="w-3.5 h-3.5 text-red-500 opacity-75 group-hover:opacity-100 transition-opacity shrink-0" />
                       <span>{selectedCustomer.phone_number}</span>
                     </button>
                   </div>
@@ -1175,11 +1175,11 @@ Thank you!`;
                         }
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-800 hover:text-rose-600 font-semibold mt-0.5 inline-flex items-center gap-1.5 group transition-colors underline-offset-2 hover:underline"
+                        className="text-slate-800 hover:text-red-600 font-semibold mt-0.5 inline-flex items-center gap-1.5 group transition-colors underline-offset-2 hover:underline"
                         title="Open place in Google Maps"
                       >
                         <span>{selectedCustomer.place}</span>
-                        <MapPin className="w-3.5 h-3.5 text-rose-500 opacity-75 group-hover:opacity-100 transition-opacity shrink-0" />
+                        <MapPin className="w-3.5 h-3.5 text-red-500 opacity-75 group-hover:opacity-100 transition-opacity shrink-0" />
                       </a>
                     ) : (
                       <span className="text-slate-800 font-semibold mt-0.5 block">―</span>
@@ -1312,7 +1312,7 @@ Thank you!`;
       {/* Floating Add Customer Button */}
       <button
         onClick={openAddModal}
-        className="fixed bottom-20 right-6 lg:bottom-8 lg:right-8 z-[60] h-14 w-14 lg:h-14 lg:w-auto lg:px-6 bg-rose-600 hover:bg-rose-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-rose-500/30 hover:scale-105"
+        className="fixed bottom-20 right-6 lg:bottom-8 lg:right-8 z-[60] h-14 w-14 lg:h-14 lg:w-auto lg:px-6 bg-red-600 hover:bg-red-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-red-500/30 hover:scale-105"
         title="Add new customer"
       >
         <Plus className="w-5 h-5 shrink-0" />

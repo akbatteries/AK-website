@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   title: "AK Batteries & RO Solutions | Admin Panel",
   description: "Secure administrative dashboard for managing products, prices, and locations.",
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/new logo.svg",
+    shortcut: "/new logo.svg",
+    apple: "/new logo.svg",
   },
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${playfair.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#FAFBFD] text-slate-900 font-sans selection:bg-rose-500 selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#FAFBFD] text-slate-900 font-sans selection:bg-red-500 selection:text-white">
         <AuthProvider>
           {children}
         </AuthProvider>

@@ -110,7 +110,7 @@ export default function Dashboard() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-mesh-gradient">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-rose-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-slate-500 text-sm font-semibold">Authenticating...</p>
         </div>
       </div>
@@ -146,7 +146,7 @@ export default function Dashboard() {
             className="bg-white rounded-md border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300 flex flex-col justify-between group min-h-[160px]"
           >
             <div className="flex items-center justify-between">
-              <div className="w-10 h-10 bg-rose-50 border border-rose-100 rounded-md flex items-center justify-center text-rose-500 group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 bg-red-50 border border-red-100 rounded-md flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform">
                 <Package className="w-5 h-5" />
               </div>
               <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-slate-500 transition-colors" />
@@ -199,9 +199,9 @@ export default function Dashboard() {
               {statsLoading ? (
                 <div className="w-12 h-6 bg-slate-100 animate-pulse rounded"></div>
               ) : (
-                <h3 className="text-2xl font-black text-rose-600 leading-none">{urgentServices}</h3>
+                <h3 className="text-2xl font-black text-red-600 leading-none">{urgentServices}</h3>
               )}
-              <p className="text-xs font-bold text-rose-600 uppercase tracking-wider mt-1.5">Upcomming Due Services (3 Days)</p>
+              <p className="text-xs font-bold text-red-600 uppercase tracking-wider mt-1.5">Upcomming Due Services (3 Days)</p>
               <p className="text-[11px] text-slate-400 font-semibold mt-1 leading-normal">Track upcoming maintenance visits due within three days.</p>
             </div>
           </Link>

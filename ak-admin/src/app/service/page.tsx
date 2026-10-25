@@ -463,7 +463,7 @@ export default function ServicePage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-mesh-gradient">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-rose-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-slate-500 text-sm font-semibold">Authenticating...</p>
         </div>
       </div>
@@ -491,7 +491,7 @@ export default function ServicePage() {
             <select
               value={serviceFilter}
               onChange={(e) => setServiceFilter(e.target.value as "urgent" | "all")}
-              className="w-full md:w-56 h-10 px-3 pr-10 rounded-md border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 appearance-none cursor-pointer"
+              className="w-full md:w-56 h-10 px-3 pr-10 rounded-md border border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 appearance-none cursor-pointer"
             >
               <option value="all">Inactive Profiles</option>
               <option value="urgent">Urgent Expiry {"<"} 3 Days</option>
@@ -512,7 +512,7 @@ export default function ServicePage() {
               placeholder="Search by Name, Place, Phone..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-10 pl-9 pr-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800"
+              className="w-full h-10 pl-9 pr-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800"
             />
             {searchQuery && (
               <button
@@ -536,7 +536,7 @@ export default function ServicePage() {
         <section className="bg-white rounded-md border border-slate-100 shadow-sm overflow-hidden">
           {customersLoading ? (
             <div className="py-24 flex flex-col items-center justify-center gap-4">
-              <div className="w-10 h-10 border-4 border-rose-500 border-t-transparent rounded-md animate-spin"></div>
+              <div className="w-10 h-10 border-4 border-red-500 border-t-transparent rounded-md animate-spin"></div>
               <p className="text-slate-400 text-xs font-semibold">Loading due registers...</p>
             </div>
           ) : displayedCustomers.length === 0 ? (
@@ -579,7 +579,7 @@ export default function ServicePage() {
                           <span
                             className={`inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-wide border ${customer.status === "Active"
                               ? "bg-emerald-50 border-emerald-100 text-emerald-700"
-                              : "bg-rose-50 border-rose-100 text-rose-700"
+                              : "bg-red-50 border-red-100 text-red-700"
                               }`}
                           >
                             {customer.status}
@@ -590,7 +590,7 @@ export default function ServicePage() {
                             <button
                               onClick={() => openCompleteServiceModal(customer)}
                               title="Attend & Complete Maintenance"
-                              className="h-9 px-3 bg-rose-600 hover:bg-rose-500 text-white rounded-lg flex items-center justify-center gap-1 text-[11px] font-bold uppercase tracking-wider transition-all shadow-sm shadow-rose-50 mr-1"
+                              className="h-9 px-3 bg-red-600 hover:bg-red-500 text-white rounded-lg flex items-center justify-center gap-1 text-[11px] font-bold uppercase tracking-wider transition-all shadow-sm shadow-red-50 mr-1"
                             >
                               <Wrench className="w-3 h-3" />
                               <span>Attend</span>
@@ -650,7 +650,7 @@ export default function ServicePage() {
                       <span
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wide border ${customer.status === "Active"
                           ? "bg-emerald-50 border-emerald-100 text-emerald-700"
-                          : "bg-rose-50 border-rose-100 text-rose-700"
+                          : "bg-red-50 border-red-100 text-red-700"
                           }`}
                       >
                         {customer.status}
@@ -679,7 +679,7 @@ export default function ServicePage() {
                     <div className="grid grid-cols-2 gap-2 w-full">
                       <button
                         onClick={() => openCompleteServiceModal(customer)}
-                        className="h-9 w-full bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                        className="h-9 w-full bg-red-600 hover:bg-red-500 text-white rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5"
                       >
                         <Wrench className="w-3.5 h-3.5" />
                         <span>Attend</span>
@@ -734,7 +734,7 @@ export default function ServicePage() {
                       setPageSize(Number(e.target.value));
                       setCurrentPage(1);
                     }}
-                    className="h-9 px-3 border border-slate-200 rounded-md bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500"
+                    className="h-9 px-3 border border-slate-200 rounded-md bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500"
                   >
                     <option value={10}>10</option>
                     <option value={30}>30</option>
@@ -798,7 +798,7 @@ export default function ServicePage() {
                   placeholder="e.g. John Doe"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                  className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                   required
                 />
               </div>
@@ -811,7 +811,7 @@ export default function ServicePage() {
                     placeholder="e.g. 9876543210"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                     required
                   />
                 </div>
@@ -823,7 +823,7 @@ export default function ServicePage() {
                     placeholder="e.g. Rohini, Sector 5"
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
-                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                     required
                   />
                 </div>
@@ -837,7 +837,7 @@ export default function ServicePage() {
                     placeholder="e.g. Exide 150AH + Luminous UPS"
                     value={productName}
                     onChange={(e) => setProductName(e.target.value)}
-                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800"
+                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800"
                     required
                   />
                 </div>
@@ -848,7 +848,7 @@ export default function ServicePage() {
                     type="date"
                     value={installationDate}
                     onChange={(e) => setInstallationDate(e.target.value)}
-                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white"
+                    className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white"
                     required
                   />
                 </div>
@@ -862,11 +862,11 @@ export default function ServicePage() {
                     type="button"
                     onClick={handleGetLocation}
                     disabled={gettingLocation}
-                    className="h-8 px-3.5 bg-rose-50 hover:bg-rose-100/80 text-rose-600 rounded-md text-[10px] font-extrabold uppercase tracking-wider transition-all flex items-center gap-1.5 disabled:opacity-50"
+                    className="h-8 px-3.5 bg-red-50 hover:bg-red-100/80 text-red-600 rounded-md text-[10px] font-extrabold uppercase tracking-wider transition-all flex items-center gap-1.5 disabled:opacity-50"
                   >
                     {gettingLocation ? (
                       <>
-                        <div className="w-3 h-3 border-2 border-rose-600 border-t-transparent rounded-md animate-spin"></div>
+                        <div className="w-3 h-3 border-2 border-red-600 border-t-transparent rounded-md animate-spin"></div>
                         <span>Acquiring...</span>
                       </>
                     ) : (
@@ -893,7 +893,7 @@ export default function ServicePage() {
                       placeholder="e.g. 28.7041"
                       value={latitude}
                       onChange={(e) => setLatitude(e.target.value)}
-                      className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800 bg-white"
+                      className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800 bg-white"
                     />
                   </div>
 
@@ -904,7 +904,7 @@ export default function ServicePage() {
                       placeholder="e.g. 77.1025"
                       value={longitude}
                       onChange={(e) => setLongitude(e.target.value)}
-                      className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800 bg-white"
+                      className="w-full h-10 px-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800 bg-white"
                     />
                   </div>
                 </div>
@@ -915,7 +915,7 @@ export default function ServicePage() {
                 <select
                   value={maintenancePeriod}
                   onChange={(e) => setMaintenancePeriod(Number(e.target.value) as 3 | 6 | 9 | 12)}
-                  className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white"
+                  className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white"
                 >
                   <option value={3}>3 Months</option>
                   <option value={6}>6 Months</option>
@@ -937,7 +937,7 @@ export default function ServicePage() {
                 <button
                   type="submit"
                   disabled={formSubmitting}
-                  className="h-11 px-6 bg-rose-600 hover:bg-rose-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-rose-200 flex items-center justify-center gap-2"
+                  className="h-11 px-6 bg-red-600 hover:bg-red-500 text-white rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-red-200 flex items-center justify-center gap-2"
                 >
                   {formSubmitting ? (
                     <>
@@ -1081,7 +1081,7 @@ export default function ServicePage() {
                   setSelectedTasks([]);
                   setIsOtherSelected(false);
                 }}
-                className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-sm text-slate-800 bg-white font-semibold cursor-pointer"
+                className="w-full h-11 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-sm text-slate-800 bg-white font-semibold cursor-pointer"
               >
                 <option value="RO">Water Purifier (RO)</option>
                 <option value="Battery">Battery / Inverter</option>
@@ -1141,7 +1141,7 @@ export default function ServicePage() {
                       placeholder="Specify custom service details..."
                       value={otherText}
                       onChange={(e) => setOtherText(e.target.value)}
-                      className="w-full h-10 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500 text-xs text-slate-800"
+                      className="w-full h-10 px-3.5 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500 text-xs text-slate-800"
                       required
                     />
                   </div>

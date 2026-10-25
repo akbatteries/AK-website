@@ -95,14 +95,14 @@ export function CategoryProducts({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="max-w-3xl mb-10 md:mb-14">
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-gradient text-3xl sm:text-4xl font-extrabold tracking-tight mb-3"
           >
             {pageTitle || "Products & Pricing"}
-          </motion.h1>
+          </motion.h2>
           {pageSubtitle && (
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-medium">
               {pageSubtitle}
@@ -112,8 +112,8 @@ export function CategoryProducts({
 
         {/* Filters & Sorting Panel */}
         {initialProducts.length > 0 && (
-          <div className="max-w-6xl mx-auto mb-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-            <div className="relative w-full sm:w-80">
+          <div className="max-w-6xl mx-auto mb-10 flex flex-row items-center justify-between gap-3">
+            <div className="relative flex-1 min-w-0">
               <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                 <Search className="h-4 w-4 text-slate-400" />
               </span>
@@ -123,20 +123,20 @@ export function CategoryProducts({
                 placeholder="Search products..."
                 defaultValue=""
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full h-11 pl-10 pr-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 text-sm text-slate-800 transition-all bg-white shadow-xs"
+                className="w-full h-11 pl-10 pr-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 text-sm text-slate-800 transition-all bg-white shadow-xs"
               />
             </div>
 
-            <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-xs shrink-0">
+            <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-xs shrink-0 h-11">
               <ArrowUpDown className="w-3.5 h-3.5 text-slate-600 shrink-0" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="h-7 bg-transparent text-xs font-bold text-slate-700 focus:outline-none cursor-pointer pr-1"
               >
-                <option value="default">Sort: Default</option>
-                <option value="lowToHigh">Price: Low to High</option>
-                <option value="highToLow">Price: High to Low</option>
+                <option value="default">Default</option>
+                <option value="lowToHigh">Low to High</option>
+                <option value="highToLow">High to Low</option>
               </select>
             </div>
           </div>

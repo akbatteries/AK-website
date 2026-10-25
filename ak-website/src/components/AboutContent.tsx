@@ -9,22 +9,22 @@ export function AboutContent() {
     {
       title: "Quality Products",
       description: "We are authorized dealers for premium battery and purifier brands. We strictly distribute 100% original manufacturer products with official warranty cards.",
-      icon: <Award className="w-6 h-6 text-rose-500" />,
+      icon: <Award className="w-6 h-6 text-red-500" />,
     },
     {
       title: "Expert Servicing",
       description: "Our field engineers are certified and undergo regular training to service and install multi-brand inverters and RO water systems perfectly.",
-      icon: <Users className="w-6 h-6 text-rose-500" />,
+      icon: <Users className="w-6 h-6 text-red-500" />,
     },
     {
       title: "Fast Doorstep Service",
       description: "Located locally, we pride ourselves on responding to service and repair calls within 2 hours. Prompt and reliable delivery at your convenience.",
-      icon: <Truck className="w-6 h-6 text-rose-500" />,
+      icon: <Truck className="w-6 h-6 text-red-500" />,
     },
     {
       title: "Honest Guarantee",
       description: "No hidden call-out fees or inflated pricing. We estimate repairs transparently and replace filters and battery elements with genuine spares.",
-      icon: <ShieldCheck className="w-6 h-6 text-rose-500" />,
+      icon: <ShieldCheck className="w-6 h-6 text-red-500" />,
     },
   ];
 
@@ -46,7 +46,7 @@ export function AboutContent() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs font-bold text-rose-600 uppercase tracking-widest bg-rose-50 px-3 py-1 rounded-md border border-rose-100 inline-block mb-4">
+            <span className="text-xs font-bold text-red-600 uppercase tracking-widest bg-red-50 px-3 py-1 rounded-md border border-red-100 inline-block mb-4">
               Our Journey
             </span>
             <h1 className="text-gradient text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
@@ -77,7 +77,7 @@ export function AboutContent() {
             <div className="grid grid-cols-2 gap-4 sm:gap-6 bg-white rounded-md p-6 sm:p-8 shadow-[0_4px_30px_rgba(15,23,42,0.02)] border border-slate-100/80">
               {stats.map((stat, idx) => (
                 <div key={idx} className="bg-slate-50 rounded-md p-4 sm:p-6 border border-slate-100 flex flex-col justify-center">
-                  <span className="block text-rose-600 font-extrabold text-3xl sm:text-4xl tracking-tight mb-1 select-none">
+                  <span className="block text-red-600 font-extrabold text-3xl sm:text-4xl tracking-tight mb-1 select-none">
                     {stat.value}
                   </span>
                   <span className="text-slate-500 text-xs font-bold uppercase tracking-wider">
@@ -108,9 +108,9 @@ export function AboutContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="bg-white rounded-md p-6 shadow-[0_4px_30px_rgba(15,23,42,0.01)] border border-slate-100/80 hover:shadow-[0_8px_30px_rgba(225,29,72,0.04)] hover:border-rose-100 transition-all duration-300 flex gap-4 sm:gap-6"
+                className="bg-white rounded-md p-6 shadow-[0_4px_30px_rgba(15,23,42,0.01)] border border-slate-100/80 hover:shadow-[0_8px_30px_rgba(225,29,72,0.04)] hover:border-red-100 transition-all duration-300 flex gap-4 sm:gap-6"
               >
-                <div className="w-12 h-12 rounded-md bg-rose-50 flex items-center justify-center flex-shrink-0 border border-rose-100/50">
+                <div className="w-12 h-12 rounded-md bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100/50">
                   {pillar.icon}
                 </div>
                 <div>

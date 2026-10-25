@@ -69,7 +69,7 @@ const SERVICES: ServiceItem[] = [
     badge: {
       title: "100% GENUINE",
       sub: "EXIDE & AMARON",
-      color: "from-rose-600 via-rose-700 to-slate-900",
+      color: "from-red-600 via-red-700 to-slate-900",
     },
   },
   {
@@ -230,7 +230,7 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center text-center max-w-md sm:max-w-lg md:max-w-xl w-full"
           >
-     
+
 
             {/* Brand Card with Generous Half-White Frosted Glass Styling */}
             <div className="w-full py-5 sm:py-7 md:py-8 px-6 sm:px-10 md:px-12 rounded-2xl sm:rounded-3xl bg-white/85 backdrop-blur-sm border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.18)] ring-1 ring-black/5 flex flex-col items-center">

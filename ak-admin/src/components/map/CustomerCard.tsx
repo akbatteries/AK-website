@@ -16,7 +16,7 @@ export default function CustomerCard({ customer, isSelected, onSelect }: Custome
       case "Active":
         return "bg-emerald-50 text-emerald-700 border-emerald-100";
       case "Inactive":
-        return "bg-rose-50 text-rose-700 border-rose-100";
+        return "bg-red-50 text-red-700 border-red-100";
       case "AMC Due Soon":
         return "bg-amber-50 text-amber-700 border-amber-100";
       default:
@@ -30,8 +30,8 @@ export default function CustomerCard({ customer, isSelected, onSelect }: Custome
     <div
       onClick={() => onSelect(customer)}
       className={`p-4 rounded-md border transition-all duration-200 cursor-pointer ${isSelected
-          ? "bg-rose-50/50 border-rose-300 shadow-md ring-1 ring-rose-400/30"
-          : "bg-white border-slate-100/90 hover:border-slate-200 hover:shadow-sm"
+        ? "bg-red-50/50 border-red-300 shadow-md ring-1 ring-red-400/30"
+        : "bg-white border-slate-100/90 hover:border-slate-200 hover:shadow-sm"
         }`}
     >
       <div className="flex items-start justify-between gap-2">

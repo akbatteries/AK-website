@@ -16,7 +16,7 @@ export function WhatsAppButton() {
   }, []);
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-3 select-none pb-[env(safe-area-inset-bottom)]">
+    <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-3 select-none pb-[env(safe-area-inset-bottom)]">
       {/* Tooltip */}
       <AnimatePresence>
         {showTooltip && (

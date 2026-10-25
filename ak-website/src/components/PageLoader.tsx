@@ -44,7 +44,7 @@ export function PageLoader({ isSuspense = false }: PageLoaderProps) {
               className="absolute w-12 h-12 flex items-center justify-center"
             >
               <Image
-                src="/logo.svg"
+                src="/new logo.svg"
                 alt="AK Batteries Logo"
                 width={48}
                 height={48}
@@ -64,7 +64,7 @@ export function PageLoader({ isSuspense = false }: PageLoaderProps) {
             <h3 className="text-sm font-extrabold text-slate-900 tracking-wider uppercase">
               AK Batteries & RO
             </h3>
-            <p className="text-[11px] font-bold text-rose-600 mt-0.5 tracking-widest uppercase">
+            <p className="text-[11px] font-bold text-red-600 mt-0.5 tracking-widest uppercase">
               Kannamangalam
             </p>
           </motion.div>

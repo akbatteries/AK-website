@@ -60,7 +60,7 @@ export default function Header() {
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
               <Image
-                src="/logo.svg"
+                src="/new logo.svg"
                 alt="AK Admin Logo"
                 width={40}
                 height={40}
@@ -77,7 +77,7 @@ export default function Header() {
               <Link
                 href="/"
                 className={`text-xs font-bold uppercase tracking-wider transition-colors ${activeTab === "home"
-                  ? "text-rose-600 border-rose-600"
+                  ? "text-red-600 border-red-600"
                   : "text-slate-400 hover:text-slate-950"
                   }`}
               >
@@ -86,7 +86,7 @@ export default function Header() {
               <Link
                 href="/products"
                 className={`text-xs font-bold uppercase tracking-wider transition-colors ${activeTab === "products"
-                  ? "text-rose-600 border-rose-600"
+                  ? "text-red-600 border-red-600"
                   : "text-slate-400 hover:text-slate-955"
                   }`}
               >
@@ -95,7 +95,7 @@ export default function Header() {
               <Link
                 href="/customers"
                 className={`text-xs font-bold uppercase tracking-wider transition-colors ${activeTab === "customers"
-                  ? "text-rose-600 border-rose-600"
+                  ? "text-red-600 border-red-600"
                   : "text-slate-400 hover:text-slate-955"
                   }`}
               >
@@ -104,7 +104,7 @@ export default function Header() {
               <Link
                 href="/customer-map"
                 className={`text-xs font-bold uppercase tracking-wider transition-colors ${activeTab === "customer-map"
-                  ? "text-rose-600 border-rose-600"
+                  ? "text-red-600 border-red-600"
                   : "text-slate-400 hover:text-slate-955"
                   }`}
               >
@@ -113,7 +113,7 @@ export default function Header() {
               <Link
                 href="/service"
                 className={`text-xs font-bold uppercase tracking-wider transition-colors ${activeTab === "service"
-                  ? "text-rose-600 border-rose-600"
+                  ? "text-red-600 border-red-600"
                   : "text-slate-400 hover:text-slate-955"
                   }`}
               >
@@ -131,13 +131,13 @@ export default function Header() {
             >
               <div
                 className={`w-10 h-10 rounded-md border flex items-center justify-center transition-all duration-300 ${inactiveCount > 0
-                  ? "bg-rose-50 border-rose-100 text-rose-600 shadow-md shadow-rose-100/50 cursor-pointer"
+                  ? "bg-red-50 border-red-100 text-red-600 shadow-md shadow-red-100/50 cursor-pointer"
                   : "bg-white border-slate-200/80 text-slate-400 cursor-pointer"
                   }`}
               >
                 <Bell className={`w-5 h-5 ${inactiveCount > 0 ? "animate-pulse" : ""}`} />
                 {inactiveCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4.5 h-4.5 bg-rose-600 text-white text-[9px] font-black rounded-md flex items-center justify-center leading-none">
+                  <span className="absolute -top-1 -right-1 w-4.5 h-4.5 bg-red-600 text-white text-[9px] font-black rounded-md flex items-center justify-center leading-none">
                     {inactiveCount}
                   </span>
                 )}
@@ -159,47 +159,47 @@ export default function Header() {
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-slate-200/80 h-16 shadow-lg z-50 px-2 flex items-center justify-around pb-safe">
         <Link
           href="/"
-          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "home" ? "text-rose-600 font-black" : "text-slate-400 hover:text-slate-900"
+          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "home" ? "text-red-600 font-black" : "text-slate-400 hover:text-slate-900"
             }`}
         >
-          <Home className={`w-5 h-5 ${activeTab === "home" ? "text-rose-600" : "text-slate-400"}`} />
+          <Home className={`w-5 h-5 ${activeTab === "home" ? "text-red-600" : "text-slate-400"}`} />
           <span className="text-[9px] font-extrabold uppercase tracking-wider">Home</span>
         </Link>
 
         <Link
           href="/products"
-          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "products" ? "text-rose-600 font-black" : "text-slate-400 hover:text-slate-900"
+          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "products" ? "text-red-600 font-black" : "text-slate-400 hover:text-slate-900"
             }`}
         >
-          <Package className={`w-5 h-5 ${activeTab === "products" ? "text-rose-600" : "text-slate-400"}`} />
+          <Package className={`w-5 h-5 ${activeTab === "products" ? "text-red-600" : "text-slate-400"}`} />
           <span className="text-[9px] font-extrabold uppercase tracking-wider">Products</span>
         </Link>
 
         <Link
           href="/customers"
-          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "customers" ? "text-rose-600 font-black" : "text-slate-400 hover:text-slate-900"
+          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "customers" ? "text-red-600 font-black" : "text-slate-400 hover:text-slate-900"
             }`}
         >
-          <Users className={`w-5 h-5 ${activeTab === "customers" ? "text-rose-600" : "text-slate-400"}`} />
+          <Users className={`w-5 h-5 ${activeTab === "customers" ? "text-red-600" : "text-slate-400"}`} />
           <span className="text-[9px] font-extrabold uppercase tracking-wider">Customers</span>
         </Link>
 
 
         <Link
           href="/service"
-          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "service" ? "text-rose-600 font-black" : "text-slate-400 hover:text-slate-900"
+          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "service" ? "text-red-600 font-black" : "text-slate-400 hover:text-slate-900"
             }`}
         >
-          <Wrench className={`w-5 h-5 ${activeTab === "service" ? "text-rose-600" : "text-slate-400"}`} />
+          <Wrench className={`w-5 h-5 ${activeTab === "service" ? "text-red-600" : "text-slate-400"}`} />
           <span className="text-[9px] font-extrabold uppercase tracking-wider">Service</span>
         </Link>
 
         <Link
           href="/customer-map"
-          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "customer-map" ? "text-rose-600 font-black" : "text-slate-400 hover:text-slate-900"
+          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === "customer-map" ? "text-red-600 font-black" : "text-slate-400 hover:text-slate-900"
             }`}
         >
-          <MapPin className={`w-5 h-5 ${activeTab === "customer-map" ? "text-rose-600" : "text-slate-400"}`} />
+          <MapPin className={`w-5 h-5 ${activeTab === "customer-map" ? "text-red-600" : "text-slate-400"}`} />
           <span className="text-[9px] font-extrabold uppercase tracking-wider">Map</span>
         </Link>
 

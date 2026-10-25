@@ -130,7 +130,7 @@ export default function CustomerMapPage() {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-4 border-rose-500 border-t-transparent rounded-md animate-spin"></div>
+          <div className="w-10 h-10 border-4 border-red-500 border-t-transparent rounded-md animate-spin"></div>
           <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">Authenticating Admin Access...</p>
         </div>
       </div>
@@ -146,7 +146,7 @@ export default function CustomerMapPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <div className="flex items-center gap-2">
-              <MapPin className="w-6 h-6 text-rose-600" />
+              <MapPin className="w-6 h-6 text-red-600" />
               <h1 className="text-2xl font-black text-slate-900 tracking-tight">Customer Location Map</h1>
             </div>
             <p className="text-xs text-slate-500 font-medium mt-1">

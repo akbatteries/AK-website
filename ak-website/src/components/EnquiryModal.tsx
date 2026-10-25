@@ -100,7 +100,7 @@ export function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="John Doe"
-                      className="w-full h-11 px-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 text-sm text-slate-800 transition-all"
+                      className="w-full h-11 px-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 text-sm text-slate-800 transition-all"
                     />
                   </div>
 
@@ -117,7 +117,7 @@ export function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+91 98765 43210"
-                      className="w-full h-11 px-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 text-sm text-slate-800 transition-all"
+                      className="w-full h-11 px-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 text-sm text-slate-800 transition-all"
                     />
                   </div>
 
@@ -131,7 +131,7 @@ export function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className="w-full h-11 px-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 text-sm text-slate-800 bg-white transition-all"
+                      className="w-full h-11 px-4 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 text-sm text-slate-800 bg-white transition-all"
                     >
                       <option value="Battery Backup">Inverter & Battery Purchase/Service</option>
                       <option value="RO Purifier">RO Water Purifier Purchase/Service</option>
@@ -151,14 +151,14 @@ export function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Describe your requirement..."
-                      className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 text-sm text-slate-800 resize-none transition-all"
+                      className="w-full px-4 py-3 rounded-md border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 text-sm text-slate-800 resize-none transition-all"
                     />
                   </div>
 
                   {/* Info Row */}
                   <div className="grid grid-cols-2 gap-2 pt-2 text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
                     <div className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-rose-500" />
+                      <Clock className="w-3.5 h-3.5 text-red-500" />
                       <span>Responds within 2 hrs</span>
                     </div>
                     <div className="flex items-center gap-1">

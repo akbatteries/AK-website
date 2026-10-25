@@ -68,11 +68,11 @@ export default function RadiusSearch({ onApplyRadiusSearch, isSearching }: Radiu
     <div className="bg-white rounded-md border border-slate-100 p-4 shadow-sm mb-6">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <Target className="w-4 h-4 text-rose-600" />
+          <Target className="w-4 h-4 text-red-600" />
           <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-wider">Customers Within Radius</h4>
         </div>
         {active && (
-          <span className="text-[10px] font-black uppercase tracking-wider bg-rose-50 text-rose-700 px-2 py-0.5 rounded border border-rose-100">
+          <span className="text-[10px] font-black uppercase tracking-wider bg-red-50 text-red-700 px-2 py-0.5 rounded border border-red-100">
             Radius Filter Active ({radiusKm} km)
           </span>
         )}
@@ -92,7 +92,7 @@ export default function RadiusSearch({ onApplyRadiusSearch, isSearching }: Radiu
             placeholder="e.g. 13.0827"
             value={latInput}
             onChange={(e) => setLatInput(e.target.value)}
-            className="w-full h-9 px-3 border border-slate-200 rounded bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500"
+            className="w-full h-9 px-3 border border-slate-200 rounded bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500"
           />
         </div>
 
@@ -103,7 +103,7 @@ export default function RadiusSearch({ onApplyRadiusSearch, isSearching }: Radiu
             placeholder="e.g. 80.2707"
             value={lngInput}
             onChange={(e) => setLngInput(e.target.value)}
-            className="w-full h-9 px-3 border border-slate-200 rounded bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500"
+            className="w-full h-9 px-3 border border-slate-200 rounded bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500"
           />
         </div>
 
@@ -114,7 +114,7 @@ export default function RadiusSearch({ onApplyRadiusSearch, isSearching }: Radiu
             placeholder="15"
             value={radiusKm}
             onChange={(e) => setRadiusKm(e.target.value)}
-            className="w-full h-9 px-3 border border-slate-200 rounded bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/10 focus:border-rose-500"
+            className="w-full h-9 px-3 border border-slate-200 rounded bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500/10 focus:border-red-500"
             min={1}
             max={500}
           />
@@ -135,7 +135,7 @@ export default function RadiusSearch({ onApplyRadiusSearch, isSearching }: Radiu
           <button
             type="submit"
             disabled={isSearching}
-            className="h-9 px-4 bg-rose-600 hover:bg-rose-500 text-white rounded text-xs font-bold uppercase tracking-wider transition-all flex-1 shadow-sm flex items-center justify-center gap-1.5"
+            className="h-9 px-4 bg-red-600 hover:bg-red-500 text-white rounded text-xs font-bold uppercase tracking-wider transition-all flex-1 shadow-sm flex items-center justify-center gap-1.5"
           >
             {isSearching ? "Searching..." : "Apply Radius"}
           </button>

@@ -16,36 +16,36 @@ const statusOptions: {
   badgeClass: string;
   activeClass: string;
 }[] = [
-  {
-    label: "All",
-    value: "All",
-    icon: Layers,
-    badgeClass: "bg-white/90 text-slate-700 hover:bg-slate-100 border-slate-200/80",
-    activeClass: "bg-slate-900 text-white border-slate-900 shadow-sm",
-  },
-  {
-    label: "Active",
-    value: "Active",
-    icon: CheckCircle2,
-    badgeClass: "bg-white/90 text-emerald-700 hover:bg-emerald-50 border-emerald-200/80",
-    activeClass: "bg-emerald-600 text-white border-emerald-600 shadow-sm",
-  },
-  {
-    label: "Non Active",
-    value: "Inactive",
-    icon: XCircle,
-    badgeClass: "bg-white/90 text-rose-700 hover:bg-rose-50 border-rose-200/80",
-    activeClass: "bg-rose-600 text-white border-rose-600 shadow-sm",
-  },
-  {
-    label: "AMC Due Soon",
-    value: "AMC Due Soon",
-    icon: Clock,
-    badgeClass: "bg-white/90 text-amber-700 hover:bg-amber-50 border-amber-200/80",
-    activeClass: "bg-amber-500 text-white border-amber-500 shadow-sm",
-  },
+    {
+      label: "All",
+      value: "All",
+      icon: Layers,
+      badgeClass: "bg-white/90 text-slate-700 hover:bg-slate-100 border-slate-200/80",
+      activeClass: "bg-slate-900 text-white border-slate-900 shadow-sm",
+    },
+    {
+      label: "Active",
+      value: "Active",
+      icon: CheckCircle2,
+      badgeClass: "bg-white/90 text-emerald-700 hover:bg-emerald-50 border-emerald-200/80",
+      activeClass: "bg-emerald-600 text-white border-emerald-600 shadow-sm",
+    },
+    {
+      label: "Non Active",
+      value: "Inactive",
+      icon: XCircle,
+      badgeClass: "bg-white/90 text-red-700 hover:bg-red-50 border-red-200/80",
+      activeClass: "bg-red-600 text-white border-red-600 shadow-sm",
+    },
+    {
+      label: "AMC Due Soon",
+      value: "AMC Due Soon",
+      icon: Clock,
+      badgeClass: "bg-white/90 text-amber-700 hover:bg-amber-50 border-amber-200/80",
+      activeClass: "bg-amber-500 text-white border-amber-500 shadow-sm",
+    },
 
-];
+  ];
 
 export default function MapFilters({ status, onStatusChange }: MapFiltersProps) {
   return (
@@ -63,9 +63,8 @@ export default function MapFilters({ status, onStatusChange }: MapFiltersProps) 
             key={opt.value}
             type="button"
             onClick={() => onStatusChange(opt.value)}
-            className={`px-3 py-1.5 rounded-md text-xs font-extrabold transition-all border flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
-              isActive ? opt.activeClass : opt.badgeClass
-            }`}
+            className={`px-3 py-1.5 rounded-md text-xs font-extrabold transition-all border flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${isActive ? opt.activeClass : opt.badgeClass
+              }`}
           >
             <Icon className="w-3.5 h-3.5 shrink-0" />
             <span>{opt.label}</span>
