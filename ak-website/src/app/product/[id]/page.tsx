@@ -60,9 +60,14 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const { id } = await params;
   const data = await getProductData(id);
 
+  // Exclude all product-detail pages from Google Search index.
+  // They remain accessible to visitors but won't appear in search results.
+  const noIndex: Metadata["robots"] = { index: false, follow: true };
+
   if (!data || !data.product) {
     return {
       title: "Product Not Found | AK Batteries & RO Solutions",
+      robots: noIndex,
     };
   }
 
@@ -76,6 +81,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     alternates: {
       canonical: `https://akbatteries.in/product/${encodeURIComponent(id)}`,
     },
+    robots: noIndex,
   };
 }
 

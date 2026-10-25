@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next";
-import { supabase } from "@/lib/supabase";
 
 export const revalidate = 3600; // Revalidate sitemap every hour
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+// Product-detail pages (/product/[id]) are intentionally excluded from the
+// sitemap so they do not appear in Google Search results. They remain
+// accessible to website visitors via direct links and internal navigation.
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://akbatteries.in";
 
-  const staticRoutes: MetadataRoute.Sitemap = [
+  return [
     {
       url: `${baseUrl}/`,
       lastModified: new Date(),
@@ -25,7 +27,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 0.9,
     },
-
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
@@ -45,21 +46,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
   ];
-
-  try {
-    const { data: products } = await supabase.from("products").select("id, updated_at");
-    if (products && products.length > 0) {
-      const productRoutes: MetadataRoute.Sitemap = products.map((product) => ({
-        url: `${baseUrl}/product/${product.id}`,
-        lastModified: product.updated_at ? new Date(product.updated_at) : new Date(),
-        changeFrequency: "weekly",
-        priority: 0.8,
-      }));
-      return [...staticRoutes, ...productRoutes];
-    }
-  } catch (err) {
-    console.error("Failed to fetch products for dynamic sitemap:", err);
-  }
-
-  return staticRoutes;
 }
