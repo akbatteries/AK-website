@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth, isAdminEmail } from "@/context/AuthContext";
 import { Shield, Mail, Lock, LogIn, AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
@@ -13,9 +13,9 @@ export default function LoginPage() {
   const [authLoading, setAuthLoading] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
 
-  // If user is already authenticated as the admin, redirect to dashboard
+  // If user is already authenticated as an admin, redirect to dashboard
   useEffect(() => {
-    if (!loading && user && user.email === "akbattery.ro@gmail.com") {
+    if (!loading && user && isAdminEmail(user.email)) {
       router.push("/");
     }
   }, [user, loading, router]);
@@ -29,7 +29,7 @@ export default function LoginPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: window.location.origin + "/login",
+          redirectTo: window.location.origin,
         },
       });
       if (error) throw error;
@@ -40,7 +40,7 @@ export default function LoginPage() {
     }
   };
 
-  // Show loading skeleton while checking original firebase state
+  // Show loading skeleton while checking Supabase auth state
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-mesh-gradient">

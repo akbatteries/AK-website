@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (currentUser) {
           if (!isAdminEmail(currentUser.email)) {
             setError(
-              `Access Denied. The email "${currentUser.email}" is not authorized. Authorized admins: ${getAdminEmails().join(", ")}.`
+              `Access Denied. The email "${currentUser.email}" is not authorized!!`
             );
             await supabase.auth.signOut();
             setUser(null);
